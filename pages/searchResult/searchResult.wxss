@@ -1,0 +1,80 @@
+/* pages/searchResult/searchResult.wxss */
+.search_arr {  
+  width: 85%; 
+  background: #ffffff;
+  border: 1px solid #000000;  
+  border-radius: 40rpx;  
+  margin-left: 20rpx;  
+}  
+
+.search_arr input{  
+  margin-left: 60rpx;  
+  height: 60rpx;  
+  border-radius: 5px;  
+}  
+
+  
+.sousuo {  
+  margin-left:20rpx; 
+  font-weight: bold;
+  font-size: 60rpx;
+  color: white;
+}  
+.page-row{  
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex; 
+  flex-direction: row;
+}  
+.searchicon {  
+  margin: 10rpx 10rpx 10rpx 10rpx;  
+  position: absolute;  
+  left:25rpx;  
+  z-index: 2;  
+  width: 20px;  
+  height: 20px;  
+  text-align: center;  
+}
+
+.result-item{
+  height: 180rpx;
+  width: 95%;
+  margin-left:2.5%;
+  margin-bottom: 10rpx;
+  border-radius:20rpx;
+  background: #FFFFFF;
+}
+
+.title-img{
+  margin:20rpx 20rpx 20rpx;
+  width:100rpx;
+  height:140rpx;
+}
+
+.result-title{
+  margin-top:20rpx;
+  font-family: "Microsoft YaHei";
+  font-size:40rpx;
+}
+
+.result-teacher{
+  font-size:35rpx;
+  font-family: "KaiTi";
+  margin-top:20rpx;
+}
+
+.result-isrunning,.result-isjoinable{
+  color:#00FF7F;
+  margin-left:10rpx;
+  margin-bottom:20rpx;
+}
+
+.result-isnotrunning,.result-isnotjoinable{
+  color:#FF0000;
+  margin-left:10rpx;
+  margin-bottom:20rpx;
+}
+
+.status-icon{
+  font-size:30rpx;
+}

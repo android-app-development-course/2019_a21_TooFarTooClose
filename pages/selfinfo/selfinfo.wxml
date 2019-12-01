@@ -1,0 +1,54 @@
+<!--pages/selfinfo/selfinfo.wxml-->
+<view class="max-box page-col">
+  
+  <image class="head-photo" src="{{headphoto}}" mode="aspectFill"></image>
+  <view class="profile-box">
+
+    <view class="divLineRow"></view>
+
+    <view class="profile-item page-row" bindtap="changeName">
+      <view class="item-left">
+        <view class="item-title">姓名：</view>
+        <view class="info-name">{{name}}</view>
+      </view>
+      <view class="item-right">
+        <icon class="iconfont icon-rightarrow"></icon>
+      </view>
+    </view>
+
+    <view class="divLineRow"></view>
+
+    <view class="profile-item page-row" bindtap="changePhone">
+      <view class="item-left">
+        <view class="item-title">手机号：</view>
+        <view class="info-phonenumber">{{phone}}</view>
+      </view>
+      <view class="item-right">
+      <icon class="iconfont icon-rightarrow"></icon>
+      </view>
+    </view>
+
+    <view class="divLineRow"></view>
+
+     <view class="profile-item page-row" bindtap="changePwd">
+        <view class="item-left">
+          <text class="change-pwd">修改密码</text>
+        </view>
+        <view class="item-right">
+        <icon class="iconfont icon-rightarrow"></icon>
+        </view>
+     </view>
+
+    <view class="divLineRow"></view>
+
+    <view class="sign-out-box" bindtap="signOut">
+      <view class="divLineRow"></view>
+      <view class="sign-out" >退出登录</view>
+      <view class="divLineRow"></view>
+    </view>
+
+
+    
+
+  </view>
+</view>

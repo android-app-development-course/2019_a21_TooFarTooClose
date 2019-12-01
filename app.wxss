@@ -1,0 +1,142 @@
+/**app.wxss**/
+@import "lib/style/icon-index.wxss";
+@import "lib/style/icon-mine.wxss";
+@import "lib/style/icon-myclass.wxss";
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+page{
+  background: #3F016B;
+}
+
+.page-row{
+   display: flex; 
+  flex-direction: row;
+}
+.page-col{
+   display: flex; 
+  flex-direction: column;
+}
+
+/* 向右箭头icon */
+@font-face {
+  font-family: 'iconfont';  /* project id 1482895 */
+  src: url('//at.alicdn.com/t/font_1482895_uwget03ieri.eot');
+  src: url('//at.alicdn.com/t/font_1482895_uwget03ieri.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1482895_uwget03ieri.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1482895_uwget03ieri.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1482895_uwget03ieri.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1482895_uwget03ieri.svg#iconfont') format('svg');
+}
+
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-rightarrow:before {
+  content: "\e633";
+}
+
+.icon-youjian:before {
+  content: "\e62a";
+}
+
+.icon-tixing:before {
+  content: "\e626";
+}
+
+.icon-arrow:before {
+  content: "\e76a";
+}
+
+.icon-kecheng:before {
+  content: "\e638";
+}
+
+.icon-shixinyuanxing:before {
+  content: "\e607";
+}
+
+.icon-zuoye:before {
+  content: "\e625";
+}
+
+.icon-weiwancheng:before {
+  content: "\e663";
+}
+
+.icon-yiwancheng:before {
+  content: "\e608";
+}
+
+.icon-youjian-copy:before {
+  content: "\e600";
+}
+
+.icon-ziyuan:before {
+  content: "\e68c";
+}
+
+.icon-shuju:before {
+  content: "\e60d";
+}
+
+.icon-renyuan:before {
+  content: "\e63e";
+}
+
+.icon-gonggao:before {
+  content: "\e658";
+}
+
+.icon-jieshao:before {
+  content: "\e603";
+}
+
+.icon-add-fill:before {
+  content: "\e6ab";
+}
+ 
+.icon-shouqi:before {
+  content: "\e601";
+}
+
+.icon-tianjiajiahaowubiankuang:before {
+  content: "\e81a";
+}
+
+.icon-gongju:before {
+  content: "\e63d";
+}
+
+.icon-yonghu:before {
+  content: "\e650";
+}
+
+.icon-character-avatar:before {
+  content: "\e62f";
+}
+
+.icon-icon_xiaolian-mian:before {
+  content: "\e651";
+}
+
+.icon-kulian:before {
+  content: "\e634";
+}
+
+.icon-xuesheng:before {
+  content: "\e627";
+}

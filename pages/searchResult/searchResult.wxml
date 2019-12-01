@@ -1,0 +1,44 @@
+<!--pages/searchResult/searchResult.wxml-->
+
+<view class='page-row'>  
+  <view class="search search_arr">  
+    <icon class="searchicon" size='20' type='search'></icon>  
+    <input class="" placeholder="请输入课程名称" bindinput="searchInput"  value="{{searchValue}}"/>  
+  </view>
+  <icon class="sousuo iconfont icon-arrow" bindtap="search"></icon>
+</view>   
+
+<view class="page-col">
+  <view class="result-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+    <view class="result-item page-row " bindtap="toDetail" data-index="{{items['class_id']}}">
+      <image class="title-img" src="{{items['img_url']}}" mode="aspectFill"></image>
+      <view class="page-col">
+        <view class="result-title">{{items['class_name']}}</view>
+        <view class="page-row">
+          <view class="result-teacher" >教师：{{items['teacher']}}</view>
+          <view class="result-isrunning" wx:if="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+          <view class="result-isnotrunning" wx:else="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+          <view class="result-isjoinable" wx:if="{{items['joinable']}}"><icon class="status-icon iconfont icon-shixinyuanxing">可加入</icon></view>
+          <view class="result-isnotjoinable" wx:else="{{items['joinable']}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可加入</icon></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="result-box">
+    <view class="result-item page-row">
+      <image class="title-img" src="http://127.0.0.1/StatusWeChatServer/imgs/gailvlun.jpg" mode="aspectFill"></image>
+      <view class="page-col">
+        <view class="result-title">概率论与数理统计</view>
+        <view class="page-row">
+          <view class="result-teacher">教师：曾志伟</view>
+          <view class="result-isrunning" wx:if="{{runningCheck}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+        <view class="result-isnotrunning" wx:else="{{runningCheck}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+        <view class="result-isjoinable" wx:if="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">可加入</icon></view>
+        <view class="result-isnotjoinable" wx:else="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可加入</icon></view>
+      </view>
+      </view>
+      
+    </view>
+  </view> -->
+</view>

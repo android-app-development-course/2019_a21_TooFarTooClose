@@ -1,0 +1,79 @@
+<!--pages/classStatusDetail/classStatusDetail.wxml-->
+<view class="page-row">
+  <icon class="iconfont icon-shuju"></icon>
+  <text class="brand">班级专注度数据</text>
+</view>
+
+<view class="graph-box">
+  <view class="score-area page-row">
+    <text class="today-score-brand">上一节课的总体平均专注度分数:</text>
+    <text class="today-score">{{classAvgScore}}</text>
+  </view>
+
+  <view class="echarts-graph">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  </view>
+  <button class="daily-btn" disabled="{{dailyGraphNotshow}}" bindtap="tapDay">上一节课</button>
+</view>
+
+<view class="best-and-worse page-row">
+  <view class="best-box"> 
+    <icon class="iconfont icon-icon_xiaolian-mian"></icon>
+    <text class="sec-brand">本日专注度较高</text>
+    <view class="page-col" wx:for="{{best5list}}" wx:key="{{index}}" wx:for-item="item">
+      <view class="page-row">
+        <view class="item-left">
+          <icon class="iconfont icon-xuesheng"></icon>
+          <text class="student-name">{{item.student_name}}</text>
+        </view>
+        <view class="item-right">
+          <text class="student-score" style="color:{{item.color}}">{{item.avg_score}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="divLine-col"></view>
+  <view class="worse-box">
+    <icon class="iconfont icon-kulian"></icon>
+    <text class="sec-brand">本日专注度较低</text>
+    <view class="page-col" wx:for="{{worse5list}}" wx:key="{{index}}" wx:for-item="item">
+      <view class="list-item">
+        <view class="page-row">
+          <view class="item-left">
+            <icon class="iconfont icon-xuesheng"></icon>
+            <text class="student-name">{{item.student_name}}</text>
+          </view>
+          <view class="item-right">
+            <text class="student-score">{{item.avg_score}}</text>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="page-row">
+  <icon class="iconfont icon-yonghu"></icon>
+  <text class="fir-brand">所有学生</text>
+</view>
+<view class="all-avg-list-box">
+  <view class="all-avg-list" wx:for="{{avg_list}}" wx:key="{{index}}" wx:for-item="item">
+    <view class="page-row">
+      <view class="item-left">
+        <icon class="iconfont icon-xuesheng"></icon>
+        <text class="student-name">{{item.student_name}}</text>
+      </view>
+      <view class="item-right">
+        <text class="student-score">{{item.avg_score}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>
+  <image src="/lib/imgs/week.png" class="img-style" animation="{{animCollect}}" bindtap="collect"></image>
+  <image src="/lib/imgs/month.png" class="img-style" animation="{{animTranspond}}" bindtap="transpond"></image>
+  <image src="/lib/imgs/year.png" class="img-style" animation="{{animInput}}" bindtap="input"></image>
+  <image src="/lib/imgs/plus.png" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
+</view>

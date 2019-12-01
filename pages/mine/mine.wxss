@@ -1,0 +1,132 @@
+/* pages/mine/mine.wxss */
+.max-box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+page{
+  background: #3F016B;
+}
+
+.profile-area{
+  margin-top:20rpx;
+  border-radius: 10rpx;
+  width:670rpx;
+  height:400rpx;
+  background: url(http://127.0.0.1/StatusWeChatServer/imgs/bg_profile.jpg) no-repeat;
+}
+
+.head-photo{
+  height:200rpx;
+  width:200rpx;
+  border-radius: 100rpx;
+  margin-top:100rpx;
+  margin-left: 50rpx; 
+  border: 5rpx purple;
+}
+
+.profile-content{
+  margin-top:50px;
+  margin-left:130rpx;
+}
+
+.name{
+  font-family: "YouYuan";
+  font-size:40rpx;
+  font-weight:bold;
+}
+
+.identity{
+  margin-top:20rpx;
+  font-family: "KaiTi";
+  font-size: 35rpx;
+}
+
+
+.page-row{
+   display: flex; 
+  flex-direction: row;
+}
+.page-col{
+   display: flex; 
+  flex-direction: column;
+}
+
+.status-msg{
+  margin-top:25rpx;
+  width:670rpx;
+  
+  background:#9370DB;
+  text-align: left;
+  border-radius: 20rpx;
+  border-bottom-right-radius:10rpx,gray;
+  font-size:30rpx;
+  
+}
+.daily,.monthly{
+  width:47%;
+  text-align: center;
+}
+
+.msg-title{
+  margin-left:20rpx;
+  margin-top:20rpx;
+  font-size:30rpx;
+  font-family:"Microsoft YaHei";  
+}
+.msg-score{
+  font-size: 60rpx;
+  text-shadow:1px 1px 1px #000000; 
+}
+
+.item-box{
+  margin-top:25rpx;
+  margin-bottom: 25rpx;
+  width:650rpx;
+  height:170rpx;
+  border:4rpx solid gray;
+  border-radius:10rpx;
+  border-bottom-right-radius:10rpx,gray;
+  background:#9370DB;
+}
+
+.item-up{
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+  font-size:30rpx;
+  color:#FFFFFF;
+  margin-left:5%;
+}
+
+.item-down{
+  margin-top:-7rpx;
+  margin-bottom:10rpx;
+  font-size:30rpx;
+  color:#FFFFFF;
+  margin-left:5%;
+}
+
+.rightarrow{
+  color:gray;
+}
+
+.divLineRow{
+  margin-left:2.5%;
+  margin-right:2.5%; 
+  background: #E0E3DA;
+  width: 95%;
+  height: 3rpx;
+}
+
+.divLineCol{
+ background: #E0E3DA;
+ height: 95%;
+ width: 2rpx;
+}
+
+.icon-rightarrow{
+  font-size:30rpx;
+  margin-left:70%;
+  margin-right:5%;
+}

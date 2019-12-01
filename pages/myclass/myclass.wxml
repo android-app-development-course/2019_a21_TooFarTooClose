@@ -1,0 +1,25 @@
+<!--pages/myclass/myclass.wxml-->
+<view class="teacher-box">
+  <view class="max-box">
+    <view class="add-class {{activeClass}}" bindtap="addClass" bindtouchstart="addClassStart" bindtouchend="addClassEnd" wx:if="{{identity}}">
+      创建课程
+    </view>
+  </view>
+
+  <view class="content-box">
+    <icon class="iconfont icon-kecheng content-brand" >所有课程</icon>
+    <view class="content-item-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+      <view class="content-item page-row" bindtap="toClassDetail" data-index="{{items['class_id']}}">
+        <image class="class-image" src="{{items['img_url']}}" mode="aspectFill"></image>
+        <view class="item-right page-col">
+          <view class="class-name">{{items['class_name']}}</view>
+          <view class="teacher-box">教师：<text class="teacher">{{items['teacher']}}</text></view>
+          <view class="result-isrunning" wx:if="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+          <view class="result-isnotrunning" wx:else="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+          <view class="class-intro-box">课程简介:<text class="class-intro">{{items['class_intro']}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>

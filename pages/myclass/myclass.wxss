@@ -1,0 +1,136 @@
+/* pages/myclass/myclass.wxss */
+
+
+.max-box{
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.add-class{
+  margin-top:30rpx;
+  border-radius: 250rpx;
+  background: url(http://127.0.0.1/StatusWeChatServer/imgs/bg_btn.jpg) no-repeat;
+  width:280rpx;
+  height:280rpx;
+  text-align: center;
+  font-family: "YouYuan";
+  font-weight: bolder;
+  font-size:40rpx;
+  line-height:280rpx;
+  border:2px gray outset;
+}
+
+.background-image{
+   height : 100%;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+.active{
+  opacity: 0.5;
+}
+
+
+#trapezoid {
+  border-bottom: 50rpx solid #FAFAD2;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  
+  border-left: 40rpx solid transparent;
+  border-right: 40rpx solid transparent;
+  height: 0;
+  width: 80rpx;
+      
+}
+
+
+.content-box{
+  margin-top: 30rpx;
+  margin-bottom:20rpx;
+}
+
+.content-brand{
+  margin-left:30rpx;
+  margin-bottom:20rpx;
+  color:#FFFFFF;
+  font-family:"YouYuan";
+  font-size:40rpx;
+  
+}
+
+.content-item{
+  margin-bottom:20rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  height:300rpx;
+  width:100%;
+}
+
+.class-image{
+  margin-top:5rpx;
+  margin-bottom: 5rpx;
+  margin-left:5rpx;
+  height:290rpx;
+  width:200rpx;
+  border-radius:10rpx;
+}
+
+.class-name{
+  margin-top:28rpx;
+  margin-left:10rpx;
+  font-family: "Microsoft Yahei";
+  font-size:38rpx;
+  color:#000000;
+  font-weight: bold;
+}
+
+.teacher-box{
+  margin-left:10rpx;
+  font-size:30rpx;
+  font-family: "Microsoft Yahei";
+  color:#000000;
+}
+
+.teacher{
+  margin-left:10rpx;
+  color:#9932CC;
+  
+}
+
+.status-icon{
+  font-size:25rpx;
+}
+
+.class-intro-box{
+  margin-left:10rpx;
+  font-size:27rpx;
+}
+
+.class-intro{
+  color:#9932CC;
+}
+
+.result-isrunning,.result-isjoinable{
+  color:#00FF7F;
+  margin-left:10rpx;
+  margin-bottom:20rpx;
+  
+}
+
+.result-isnotrunning,.result-isnotjoinable{
+  color:#FF0000;
+  margin-left:10rpx;
+  margin-bottom:20rpx;
+}

@@ -1,0 +1,23 @@
+<!--pages/mailDetail/mailDetail.wxml-->
+<view class="page-col">
+  <view class="mail-max">
+    <view class="mail-info">
+      <view class="mail-title">
+        {{mailTitle}}
+      </view>
+      <view class="page-row">
+        <view class="mail-time">
+          {{sendedTime}}
+        </view>
+        <view class="mail-addresser">
+          发件人：{{addresser}}
+        </view>
+      </view>
+    </view>
+    <view class="divLineRow"></view>
+    <view class="mail-text">
+      {{mailText}}
+    </view>
+  </view>
+  <button class="reply-btn" bindtap="replyMail">回复此邮件</button>
+</view>

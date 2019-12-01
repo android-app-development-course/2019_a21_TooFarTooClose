@@ -1,0 +1,74 @@
+<!--pages/classDetail/classDetail.wxml-->
+<view class="max-box page-col">
+  <view class="page-row">
+    <image class="class-img" src="{{titleImgUrl}}" mode="aspectFill"></image>
+    <view class="profile-left">
+      <view class="class-title">{{classTitle}}</view>
+      <view class="class-teacher">{{classTeacher}}</view>
+      <view class="result-isrunning" wx:if="{{running}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+      <view class="result-isnotrunning" wx:else="{{running}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+      <view class="result-isjoinable" wx:if="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">可加入</icon></view>
+      <view class="result-isnotjoinable" wx:else="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可加入</icon></view>
+    </view>
+  </view>
+  
+  <view class="divLineRow"></view>
+  <view class="page-row">
+  <icon class="iconfont icon-jieshao"></icon>
+    <view class="class-intro-title">课程介绍：</view>
+  </view>
+  
+  <view class="class-intro">{{classIntro}}</view>
+  <view class="divLineRow"></view>
+
+  <view class="control-box  page-col" wx:if="{{identity==0}}" hidden="{{hasJoin==0}}">
+    <view class="page-row">
+      <view class="item-area page-col">
+        <icon class="iconfont icon-shuju" bindtap="toSelfStatusDetail"></icon>
+        <text class="title-text">专注度数据</text>
+      </view>
+      <view class="item-area page-col" bindtap="toHomework">
+        <icon class="iconfont icon-zuoye"></icon>
+        <text class="title-text">作业</text>
+      </view>
+      <view class="item-area page-col" bindtap="toClassResource">
+        <icon class="iconfont icon-ziyuan"></icon>
+        <text class="title-text">课程资源</text>
+      </view>
+      <view class="item-area page-col" bindtap="toMail">
+        <icon class="iconfont icon-youjian-copy"></icon>
+        <text class="title-text">发送邮件</text>
+      </view>
+    </view>
+
+    <view class="gonggao-box">
+      <view class="page-row">
+        <icon class="iconfont icon-gonggao"></icon>
+        <text class="gonggao-title">课程公告</text>
+      </view>
+    <view class="gonggao-content">{{classGonggao}}</view>
+    </view>
+   
+  </view>
+
+  <view class="control-box page-row" wx:if="{{identity==1}}" hidden="{{hasJoin==0}}">
+    <view class="item-area page-col">
+      <icon class="iconfont icon-shuju" bindtap="toClassStatusDetail"></icon>
+      <text class="title-text">专注度数据</text>
+    </view>
+    <view class="item-area page-col" bindtap="toHomework">
+      <icon class="iconfont icon-zuoye"></icon>
+      <text class="title-text">作业管理</text>
+    </view>
+    <view class="item-area page-col" bindtap="toClassResource">
+      <icon class="iconfont icon-ziyuan"></icon>
+      <text class="title-text">课程资源</text>
+    </view>
+    <view class="item-area page-col" bindtap="toClassManage">
+      <icon class="iconfont icon-renyuan"></icon>
+      <text class="title-text">课程管理</text>
+    </view>
+  </view>
+
+  <button class="join-btn" bindtap="joinClass"  wx:if="{{show_join_btn}}">加入课程</button>
+</view>

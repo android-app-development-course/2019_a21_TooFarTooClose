@@ -1,0 +1,100 @@
+/* pages/signin/signin.wxss */
+
+.max-box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.brand-text{
+  color: #ffff;
+  font-size: 65rpx;
+  font-family: "YouYuan";
+  margin-top:50rpx;
+}
+
+.form-area{
+  background: #7B68EE;
+  border-radius: 5px;
+  margin-top:80rpx;
+  width:600rpx;
+  height: 900rpx;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.id-text{
+  margin-right:15rpx;
+  font-family: "YouYuan";
+  font-weight: bold;
+  color: #ffff;
+  font-size: 35rpx;
+  margin-top:40rpx; 
+}
+
+.id-input{
+  margin-top:5rpx; 
+  width:450rpx;
+  margin:5rpx; 
+  font-size: 30rpx;
+  color: #000000;
+  border-bottom: 1px solid gray;
+}
+
+.yanzheng-input{
+  margin-top:5rpx; 
+  width:250rpx;
+  margin:5rpx; 
+  font-size: 30rpx;
+  color: #000000;
+  border-bottom: 1px solid gray;
+}
+
+.yanzheng-btn{
+  height:70rpx;
+  width:200rpx;
+  font-size: 27rpx;
+  background:#8A2BE2;
+}
+
+
+.login{
+  color: #ffff;
+  font-size: 35rpx;
+  margin-top: 70px;
+  margin-bottom:40rpx;
+  text-decoration-line: underline;
+}
+
+
+
+.tips-text{
+  margin-top:40rpx; 
+  color: red;
+  font-size: 25rpx;
+}
+
+ .identity-radio{
+   height:30rpx;
+   font-size:40rpx;
+   transform:scale(0.7);
+   margin-top:40rpx;
+   margin-bottom:40rpx;
+ }
+
+.bangding-radio{
+   height:25rpx;
+   font-size:35rpx;
+   transform:scale(0.7);
+   margin-bottom:30rpx;
+}
+.signin-btn{
+  margin-top:40rpx;
+}
+
+.phcolor{
+    color: #000000;
+}
+

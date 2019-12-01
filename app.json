@@ -1,0 +1,58 @@
+{
+  "pages": [
+    
+    
+    "pages/index/index",
+    "pages/login/login",
+    "pages/signin/signin",
+    "pages/classDetail/classDetail",
+    "pages/selfinfo/selfinfo",
+    "pages/searchResult/searchResult",
+    "pages/mailEdit/mailEdit",
+    "pages/mailDetail/mailDetail",
+    "pages/mail/mail",
+    "pages/logs/logs",
+    "pages/myclass/myclass",
+    "pages/mine/mine",
+    "pages/homework/homework",
+    "pages/classResource/classResource",
+    "pages/newClass/newClass",
+    "pages/classEdit/classEdit",
+    "pages/classManage/classManage",
+    "pages/selfStatusDetail/selfStatusDetail",
+    "pages/classStatusDetail/classStatusDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#3F016B",
+    "navigationBarTitleText": "Status",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#ffffff",
+    "selectedColor": "#C0C0C0",
+    "borderStyle": "white",
+    "backgroundColor": "#3F016B",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "lib/imgs/index.png",
+        "selectedIconPath": "lib/imgs/index-active.png"
+      },
+      {
+        "text": "我的课程",
+        "pagePath": "pages/myclass/myclass",
+        "iconPath": "lib/imgs/myclass.png",
+        "selectedIconPath": "lib/imgs/myclass-active.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "lib/imgs/mine.png",
+        "selectedIconPath": "lib/imgs/mine-active.png"
+      }
+    ]
+  }
+}

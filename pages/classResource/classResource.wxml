@@ -1,0 +1,45 @@
+<!--pages/classResource/classResource.wxml-->
+<view class="page-row">
+  <icon class="iconfont icon-ziyuan"></icon>
+  <text class="brand">课程资源</text>
+</view>
+
+<view wx:if="{{identity==1}}">
+  <view class="page-row" bindtap="dropDown" hidden="{{openDropdown}}">
+    <icon class="iconfont icon-add-fill"></icon>
+    <text class="add-resource">上传资源</text>
+  </view>
+  <view class="page-row" bindtap="dropDown" hidden="{{openDropdown==0}}">
+    <icon class="iconfont icon-shouqi"></icon>
+    <text class="add-resource">收起</text>
+  </view>
+  <view class="edit-resource-area" hidden="{{openDropdown==0}}">
+      <form bindsubmit="uploadResource">
+        <view class="page-row" >
+          <text class="resource-title-brand">标题:</text>
+          <input class="resource-title" name="resourceTitle" placeholder="输入资源标题" placeholder-class="phcolor"></input>
+        </view>
+        <picker mode="date" value="{{deadline}}"  start="{{nowDate}}" end="2999-12-30" bindchange="bindDateChange">
+          <view class="date-picker">上传资源(点击选择): {{tempfiles['name']}}</view>
+        </picker>
+        <button class="submit-btn" bindtap="uploadResource">上传</button>
+      </form>
+  </view>
+</view>
+
+
+<view class="item-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+
+  <view class="resource-item page-row" bindtap="copyUrl" data-index="{{index}}">
+    <view class="item-left">
+      <view class="item-title">{{items['resource_title']}}</view>
+    </view>
+
+    <view class="item-right page-row" >
+      <text class="goto-complete">复制资源链接</text>
+      <icon class="iconfont icon-rightarrow"></icon>
+    </view>
+
+  </view>
+</view>
+

@@ -1,0 +1,176 @@
+/* pages/classStatusDetail/classStatusDetail.wxss */
+.brand{
+  font-family:"YouYuan";
+  font-size:50rpx;
+  margin-left:20rpx;
+  color: #FFFFFF;
+}
+
+.icon-shuju{
+  margin-left: 20rpx;
+  color: #FFFF00;
+  font-size:60rpx;
+}
+
+.graph-box{
+  margin-top:20rpx;
+  margin-left:1%;
+  width:98%;
+  height:600rpx;
+  border-radius:10rpx;
+  background: #FFFFFF;
+  border-left:2%;
+}
+
+.echarts-graph{
+  /* margin-left:2%; */
+  margin-top:30rpx;
+  width:98%;
+  height:82%;
+}
+
+.today-score-brand{
+  margin-top:20rpx;
+  margin-left:20rpx;
+  font-family: "YouYuan";
+  font-size:38rpx;
+  color:#000000;
+}
+
+.today-score{
+  margin-top:20rpx;
+  margin-left:10rpx;
+  color:#000000;
+}
+
+.best-and-worse{
+  margin-top:40rpx;
+  margin-bottom:30rpx;
+  margin-left:5%;
+  width:90%;
+  height:430rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+}
+
+
+.img-plus-style {
+  position:absolute;
+  height: 100rpx;
+  width: 100rpx;
+  /* position: absolute; */
+  top: 570rpx;
+  right: 50rpx;
+  z-index: 100;
+}
+
+.img-style {
+  position:absolute;
+  height: 100rpx;
+  width: 100rpx;
+  /* position: absolute; */
+  top: 570rpx;
+  right: 50rpx;
+  opacity: 0;
+}
+
+.daily-btn{
+  text-align: center;
+  height:60rpx;
+  width:150rpx;
+  border-radius: 60rpx;
+  position: absolute;
+  top:590rpx;
+  right:200rpx;
+  background:#FF8C00;
+  color:white;
+  font-size:23rpx;
+}
+
+.icon-icon_xiaolian-mian{
+  margin-left:20rpx;
+  margin-top:20rpx;
+  color:#00FF7F;
+  font-size:35rpx;
+}
+
+.icon-kulian{
+  margin-left:20rpx;
+  margin-top:20rpx;
+  color:#FFFF00;
+  font-size:35rpx;
+}
+
+.sec-brand{
+  font-size: 32rpx;
+  font-family:"Microsoft YaHei";
+}
+
+.divLine-col{
+ background: #E0E3DA;
+ height: 100%;
+ width: 3rpx;
+}
+
+.best-box{
+  width:50%;
+}
+
+.worse-box{
+  width:49%;
+}
+
+.icon-xuesheng{
+  font-size:35rpx;
+}
+
+.student-name{
+  font-size:30rpx;
+}
+
+.student-score{
+  margin-top:30rpx;
+  font-size:35rpx;
+}
+
+.icon-xuesheng{
+  margin-left:20rpx;
+}
+
+.item-left{
+  flex: 1;
+  align-items:center;
+}
+
+.item-right {
+  position: relative;
+  align-items:center;
+  margin-right: 20rpx;
+}
+
+.all-avg-list{
+  width:90%;
+  
+  margin-left:5%;
+  background: #FFFFFF;
+
+}
+
+.all-avg-list-box{
+  margin-top:20rpx;
+}
+
+.icon-yonghu{
+  margin-top:10rpx;
+  margin-left: 20rpx;
+  color:#FFFFFF;
+  font-size: 40rpx;
+}
+
+.fir-brand{
+  margin-top:30rpx;
+  margin-left:20rpx;
+  font-size:38rpx;
+  font-family:"YouYuan";
+  color:#FFFFFF;
+}

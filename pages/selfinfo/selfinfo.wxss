@@ -1,0 +1,87 @@
+/* pages/selfinfo/selfinfo.wxss */
+.max-box{
+  justify-content: center;
+  align-items:center;
+}
+
+.head-photo{
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+  height:300rpx;
+  width:300rpx;
+  border-radius:300rpx;
+
+}
+
+.profile-box{
+  margin-top:100rpx;
+  width:100%;
+}
+
+.profile-item{
+  position: relative;
+  color:#FFFFFF;
+  height:80rpx;
+}
+
+.item-left{
+  flex: 1;
+  align-items:center;
+}
+
+.item-right {
+  position: relative;
+  align-items:center;
+  margin-right: 25rpx;
+}
+
+.info-name,.info-phonenumber{
+  margin-left:20rpx;
+  font-size:35rpx;
+  font-family: "Microsoft YaHei";
+  
+}
+
+.item-title{
+  margin-left:20rpx;
+  font-size:30rpx;
+  font-family: "Microsoft YaHei";
+}
+
+.change-pwd{
+  margin-left:20rpx;
+  font-family: "Microsoft YaHei";
+  font-size: 40rpx;
+}
+
+
+.icon-rightarrow{
+  justify-content: right;
+  float:right;
+  right:20rpx;
+  font-size:30rpx;
+  color:#FFFFFF;
+}
+
+.sign-out-box{
+  margin-top:300rpx;
+  display: flex; 
+  flex-direction: column;
+  align-items:center;
+}
+
+.sign-out{
+  color:red;
+  font-size: 40rpx;
+}
+
+
+.divLineRow{
+  margin-top:12rpx;
+  margin-bottom:12rpx;
+  background: #E0E3DA;
+  width: 100%;
+  height: 1px;
+}
+
+

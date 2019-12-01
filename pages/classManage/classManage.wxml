@@ -1,0 +1,50 @@
+<!--pages/classManage/classManage.wxml-->
+<view class="page-row">
+  <icon class="iconfont icon-renyuan"></icon>
+  <text class="brand">课程管理</text>
+</view>
+
+<view class="max-box">
+  <view class="basic-manage">
+    <view class="page-row">
+      <icon class="iconfont icon-gongju"></icon>
+      <text class="basic-manage-brand">基本设置</text>
+    </view>
+    <view class="page-col">
+      <view class="page-row" style="margin-top:20rpx;">
+        <text class="sec-brand">开放加入</text>
+        <switch class="joinable-switch" checked="{{joinable}}" bindchange="switchChange"></switch>
+      </view>
+      <text class="sec-brand" style="margin-top:20rpx;">课堂容量</text>
+      <slider class="num-sliser" bindchange="slider4change" min="10" max="200" show-value></slider>
+    </view>
+    <view class="page-row">
+      <icon class="iconfont icon-gonggao"></icon>
+      <text class="basic-manage-brand">课程公告</text>
+    </view>
+    <view class="page-col">
+      <textarea class="gonggao-textarea" placeholder="输入课程公告" placeholder-class="phcolor">
+      </textarea>
+    </view>
+  </view>
+
+  
+
+
+  
+  
+  <view class="page-row">
+    <icon class="iconfont icon-yonghu"></icon>
+    <text class="fir-brand">学生列表</text>
+  </view>
+
+  <view class="items">
+    <view wx:for="{{items}}"  wx:key="{{index}}"  class="item">
+     
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+      <icon class="iconfont icon-.icon-character-avatar"></icon>{{item.student_name}}</view>
+      <view data-index="{{index}}" bindtap = "delItem" class="inner del">移除</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class='page-row'>  
+  <view class="search_arr">  
+    <icon class="searchicon" size='20' type='search'></icon>  
+    <input class="" placeholder="请输入课程名称" bindinput="searchInput"  value="{{searchValue}}"/>  
+  </view> 
+  <icon class="sousuo iconfont icon-arrow" bindtap="search"></icon>
+</view>  
+
+<view>
+  <swiper indicator-dots='true' indicator-color='#9932CC' indicator-active-color='#BA55D3' autoplay='true'>
+    <swiper-item>
+      <image src="{{imgs[0]}}" mode="aspectFill"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgs[1]}}" mode="aspectFill"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgs[2]}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="max-box">
+  <view class="remind" wx:if="{{identity==0}}">
+    <icon class="tixing iconfont icon-tixing">作业提醒：</icon>
+    <swiper class='swiper-box' autoplay='true' interval='2000' vertical='true' circular='true'>
+      <block wx:for="{{remindItems}}" wx:key="{{index}}" wx:for-item="items">
+        <swiper-item class='item'>{{items['class_name']+"-"+items['homework_title']}}</swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="course-score-area page-col">
+    <text class="course-score-brand">最近一节课的平均专注度：</text>
+    <text class="course-score">{{score}}</text>
+  </view>
+
+</view>

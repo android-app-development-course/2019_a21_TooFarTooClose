@@ -1,0 +1,23 @@
+<!--pages/newClass/newClass.wxml-->
+<view class="page-row">
+  <icon class="iconfont icon-kecheng"></icon>
+  <text class="brand">创建课程</text>
+</view>
+
+<view class="max-box page-col">
+  <view class="select-img page-col" bindtap="chooseImg" style="background-image: url({{tempFilePaths}})">
+    <icon class="iconfont icon-tianjiajiahaowubiankuang:before" ></icon>
+    <text>上传封面</text>
+  </view>
+  <form class="max-form" bindsubmit="formSubmit">
+   
+    <text class="item-brand">课程名称</text>
+    <input name="class_title"></input>
+    <text class="item-brand">课程容量</text>
+    <input name="max_num"></input>
+    <text class="item-brand">课程介绍</text>
+    <textarea name="class_intro" class="class-intro"></textarea>
+    
+    <button form-type="submit" class="submit_btn">创建课程</button>
+  </form>
+</view>

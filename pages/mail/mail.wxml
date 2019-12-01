@@ -1,0 +1,18 @@
+<!--pages/mail/mail.wxml-->
+<view class="max-box page-col">
+  <view class="brand"><icon class="iconfont icon-youjian-copy"></icon>所有邮件</view>
+  <view class="page-row" bindtap="toSendedMail">
+    <text class="sended-mail">我发出的</text>
+    <icon class="iconfont icon-rightarrow"></icon>
+  </view>
+  <view class="mail-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+    <view class="mail-item" bindtap="toDetail" data-index="{{items['mail_id']}}">
+      <view class="mail-title">{{items['title']}}</view>
+      <view class="page-row">
+        <view class="mail-time">{{items['time']}}</view>
+        <view class="mail-addresser">{{items['addresser']}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

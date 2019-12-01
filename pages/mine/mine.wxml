@@ -1,0 +1,31 @@
+<!--pages/mine/mine.wxml-->
+<view class="max-box">
+  <view class="profile-area page-row">
+    <image src='{{headphoto}}' class="head-photo"> </image>
+    <view class="profile-content page-col">
+      <p class="name">{{name}}</p>
+      <p class="identity" wx:if="{{identity}}">教师</p>
+      <p class="identity" wx:else="{{identity}}">学生</p>
+    </view>
+  </view>
+
+  <view class="status-msg page-row" wx:if="{{identity==0}}">
+    <view class="daily">
+      <view class="msg-score" style="color:{{dailyColor}}">{{dailyScore}}</view>
+      <view class="msg-title">今天专注度平均得分</view>
+    </view>
+    <view class="divLineCol"></view>
+    <view class="monthly">
+      <view class="msg-score" style="color:{{monthlyColor}}">{{monthlyScore}}</view>
+      <view class="msg-title">本月专注度平均得分</view>
+    </view>
+  </view>
+
+  <view class="item-box">
+    <view class="item-up" bindtap="toMail">我的邮件<icon class="iconfont icon-rightarrow"></icon></view>
+    <view class="divLineRow"></view>
+    <view class="item-down" bindtap="toSelfInfo">个人信息<icon class="iconfont icon-rightarrow"></icon></view>
+  </view>
+</view>
+
+

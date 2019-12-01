@@ -1,0 +1,135 @@
+/* pages/classManage/classManage.wxss */
+.brand{
+  font-family:"YouYuan";
+  font-size:50rpx;
+  margin-left:20rpx;
+  color: #FFFFFF;
+}
+
+.icon-renyuan{
+  margin-left: 20rpx;
+  color: #00FF7F;
+  font-size:60rpx;
+}
+
+.basic-manage{
+  margin-left: 5%;
+  margin-top:30rpx;
+  height:500rpx;
+  width:90%;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+
+.sec-brand{
+  margin-left:20rpx;
+  font-size:30rpx;
+}
+
+.joinable-switch{
+  margin-left:20rpx;
+  zoom:0.6;
+}
+
+.num-sliser{
+  zoom:0.7;
+}
+
+.gonggao-textarea{
+  width:90%;
+  height:150rpx;
+  margin-left:5%;
+  margin-top:30rpx;
+  background: #E6E6FA;
+  border-radius: 15rpx;
+}
+
+.phcolor{
+  font-size:35rpx;
+}
+
+.basic-manage-brand{
+  margin-top:20rpx;
+  margin-left:10rpx;
+  font-family:"YouYuan";
+  font-size:35rpx;
+}
+
+.fir-brand{
+  margin-top:40rpx;
+  margin-left:20rpx;
+  font-size:40rpx;
+  font-family:"YouYuan";
+  color:#FFFFFF;
+}
+
+.icon-gongju{
+  margin-top:0;
+  margin-left:20rpx;
+  font-size:40rpx;
+  color:#9400D3;
+}
+
+.icon-gonggao{
+  margin-top:0;
+  margin-left:20rpx;
+  font-size:40rpx;
+  color:#9400D3;
+}
+
+.icon-yonghu{
+  margin-top:30rpx;
+  margin-left:20rpx;
+  font-size:50rpx;
+  color:#FFFFFF;
+
+}
+
+
+/* ////////////////////// */
+view{
+    box-sizing: border-box;
+}
+
+.items{
+  margin-top:30rpx;
+  width: 90%;
+  margin-left:5%;
+}
+.item{
+    position: relative;
+    border-top: 2rpx solid #eee;
+    height: 120rpx;
+    line-height: 120rpx;
+    overflow: hidden;
+     
+}
+.item:last-child{
+    border-bottom: 2rpx solid #eee;
+}
+.inner{
+    position: absolute;
+    top:0;
+}
+.inner.txt{
+    background-color: #fff;
+    width: 100%;
+    z-index: 5;
+    padding:0 10rpx;
+    transition: left 0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.inner.del{
+    background-color: #e64340;
+    width: 180rpx;text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff
+}
+.item-icon{
+    width: 64rpx;
+    vertical-align: middle;
+    margin-right: 16rpx
+}

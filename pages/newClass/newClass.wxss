@@ -1,0 +1,78 @@
+/* pages/newClass/newClass.wxss */
+.brand{
+  font-family:"YouYuan";
+  font-size:50rpx;
+  margin-left:20rpx;
+  color: #FFFFFF;
+}
+
+.icon-kecheng{
+  margin-left: 20rpx;
+  color: #FFFFFF;
+  font-size:60rpx;
+}
+
+.max-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  margin-top:50rpx;
+  
+  width:90%;
+  margin-left:5%;
+}
+
+.max-form{
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  height:650rpx;
+  width:90%;
+}
+
+.select-img{
+  color:#FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-top:20rpx;
+  margin-bottom:30rpx;
+  text-align: center;
+  height:300rpx;
+  width:300rpx;
+  border:dashed #FFFFFF 5rpx;
+  border-radius:20rpx;
+   background-size:100% 100%;
+    -moz-background-size:100% 100%;
+
+}
+
+.item-brand{
+  margin-left:10%;
+  margin-top:30rpx;
+  margin-bottom:20rpx;
+  color:#000000;
+}
+
+.class-intro{
+  margin-left: 10%;
+  margin-top:20rpx;
+  background: #E6E6FA;
+  width:80%;
+  height:180rpx;
+  border-radius: 10rpx;
+
+}
+
+input{
+  margin-bottom:20rpx;
+  border-bottom: 1px solid gray;
+  width:80%;
+  margin-left:10%;
+}
+
+.submit_btn{
+  margin-top:30rpx;
+  height:100rpx;
+  width:80%;
+  background: #00FF7F;
+}

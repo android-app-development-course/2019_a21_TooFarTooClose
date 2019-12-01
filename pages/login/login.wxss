@@ -1,0 +1,58 @@
+/* pages/login/login.wxss */
+
+.max-box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.brand{
+  height: 120px;
+  width: 120px;
+  border-radius: 90px;
+  margin-top: 40rpx;
+}
+
+.form-area{
+  background: #7B68EE;
+  border-radius: 5px;
+  margin-top:100rpx;
+  width:600rpx;
+  height: 450rpx;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.id-text{
+  font-family: "YouYuan";
+  font-weight: bold;
+  color: #ffff;
+  font-size: 35rpx;
+  margin-top:60rpx; 
+}
+
+.id-input{
+  margin-top:5rpx; 
+  width:450rpx;
+  margin:5rpx; 
+  font-size: 30rpx;
+  color: #000000;
+  border-bottom: 1px solid gray;
+}
+
+.login-btn{
+  margin-top:100rpx; 
+}
+
+.signin{
+  color: #ffff;
+  font-size: 35rpx;
+  margin-top: 70px;
+  text-decoration-line: underline;
+}
+
+.phcolor{
+    color: #000000;
+}

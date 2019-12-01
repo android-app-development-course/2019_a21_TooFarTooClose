@@ -1,0 +1,41 @@
+<!--pages/signin/signin.wxml-->
+<view class="max-box">
+  <view class="brand-text">注册</view>
+  
+  <view class="form-area">
+    <form bindsubmit="formSubmit">
+      <view class="id-text">姓名：</view>
+      <input name="name" class="id-input" placeholder-class="phcolor" placeholder="请输入姓名" type="text"/>
+      <view class="page-row">
+        <view class="id-text">账号</view>
+        <icon class="id-text" type="warn" size="10" wx:if="{{uniqueCkeck}}"><text class="tips-text">手机号已被占用</text></icon>
+        <view class="tips-text" wx:if="{{idCheck}}">-请正确输入11位手机号码-</view>
+      </view>
+      <input name="phone" class="id-input" placeholder-class="phcolor" placeholder="请输入手机号" type="number" maxlength="11" bindinput="phoneInput" bindblur="checkid"/>
+      <view class="id-text">密码</view>
+      <input name="pwd" class="id-input" placeholder-class="phcolor" password="true" placeholder="请输入密码" maxlength="20" bindinput="pwd1Input"/>
+      <view class="page-row">
+        <view class="id-text">确认密码</view>
+        <view class="tips-text" wx:if="{{pwdCheck}}">-两次输入的密码不一致-</view>
+      </view>
+      <input class="id-input" placeholder-class="phcolor" password="true" placeholder="请再次输入密码" maxlength="20" bindinput="pwd2Input" bindblur="checkpwd" />
+      <view class="page-row">
+        <view class="id-text">验证码</view>
+        <icon class="id-text" type="success" size="15" wx:if="{{yanzheng}}"></icon>
+      </view>
+      
+      <view class="page-row">
+        <input name="yanzheng" class="yanzheng-input" placeholder-class="phcolor" placeholder="请输入验证码" bindinput="yanzhengInput"/>
+        <button class="yanzheng-btn" bindtap="getYanzheng" disabled="{{yanzhengDisable}}">{{yanzhengText}}</button>
+      </view>
+      <radio-group name="identity">
+        <radio value="0" class="identity-radio" checked>我是学生</radio>
+        <radio value="1" class="identity-radio">我是教师</radio>
+      </radio-group>
+      <!-- <radio name="bangding" value="1" class="bangding-radio" checked="{{bangdingCheck}}">绑定当前微信与手机号</radio> -->
+      <button class="signin-btn" form-type="submit" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">注册</button>
+      
+    </form>
+  </view>
+  <view class="login" bindtap="tologin">登录</view>
+</view>

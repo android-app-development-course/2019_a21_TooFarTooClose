@@ -1,0 +1,160 @@
+/* pages/classDetail/classDetail.wxss */
+page{
+  background: #F0FFFF;
+}
+
+.max-box{
+  margin:10rpx 10rpx 20rpx;
+}
+
+.class-img{
+  width:300rpx;
+  height:300rpx;
+  margin-top:20rpx;
+  border-radius: 20rpx;
+}
+
+.class-title{
+  margin-top:40rpx;
+  margin-bottom: 20rpx;
+  font-family: "Microsoft YaHei";
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.class-teacher{
+  margin-left:30rpx;
+  margin-top:10rpx;
+  font-family: "KaiTi";
+  font-size: 35rpx;
+
+}
+
+.class-intro-title{
+  margin-top:20rpx;
+  font-size:35rpx;
+  font-family:"Microsoft YaHei";
+  font-weight:bold;
+  
+}
+
+.class-intro{
+  margin-top:20rpx;
+  margin-left:5%; 
+  margin-right:5%;
+  height:400rpx;
+  width:90%;
+  font-family:"Microsoft YaHei";
+  font-size:30rpx;
+
+}
+
+.divLineRow{
+  margin-top:20rpx;
+  margin-bottom:10rpx;
+  margin-left:2.5%;
+  margin-right:2.5%;
+  background: #E0E3DA;
+  width: 95%;
+  height: 2rpx;
+}
+
+.item-area{
+  margin:20rpx 30rpx 20rpx;
+  text-align: center;
+}
+
+.title-text{
+  font-size:28rpx;
+  font-family:"Microsoft YaHei";
+  color:#000000;
+}
+
+.gonggao-box{
+  margin:5% 20rpx 5%;
+  height:400rpx;
+  width:90%;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+
+.gonggao-title{
+  margin-top: 13rpx;
+  font-size:35rpx;
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  position: flex;
+}
+
+.gonggao-content{
+  margin:15rpx 15rpx 15rpx;
+  font-family: "Microsoft YaHei";
+  font-size:30rpx;
+}
+
+
+.join-btn{
+  position:fixed;
+  bottom:20rpx;
+  margin-left:5%;
+  margin-right:5%;
+  /* margin-bottom:20rpx; */
+  width:90%;
+  height:100rpx;
+  background: #00FF7F;
+  
+}
+
+.result-isrunning,.result-isjoinable{
+  color:#00FF7F;
+  margin-left:10rpx;
+  margin-bottom: 10rpx;
+}
+
+.result-isnotrunning,.result-isnotjoinable{
+  color:#FF0000;
+  margin-left:10rpx;
+  margin-bottom: 10rpx;
+}
+
+.status-icon{
+  font-size:30rpx;
+}
+
+.icon-zuoye{
+  color: #FFFF00;
+  font-size:120rpx;
+}
+
+.icon-ziyuan{
+  color:#1E90FF;
+  font-size:120rpx;
+}
+
+.icon-youjian-copy{
+  color:#00FF00;
+  font-size:120rpx;
+}
+
+.icon-shuju{
+  color:#FF0000;
+  font-size:120rpx;
+}
+
+.icon-renyuan{
+  color:#00FF7F;
+  font-size:120rpx;
+}
+
+.icon-gonggao{
+  margin-left:5%;
+  font-size: 50rpx;
+  color:blueviolet;
+}
+
+.icon-jieshao{
+  margin-left:5%;
+  color:blueviolet;
+  font-size:50rpx;
+}
+
