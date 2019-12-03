@@ -85,3 +85,32 @@
   
 }
 
+.divLine-col{
+ background: #E0E3DA;
+ height: 100%;
+ width: 3rpx;
+}
+
+.sec-brand{
+  margin-top:40rpx;
+  margin-left:40rpx;
+  color:#000000;
+  font-size:38rpx;
+  font-family: "YouYuan";
+
+}
+
+.sec-score{
+  margin-top:40rpx;
+  margin-left:10rpx;
+  margin-right:20rpx;
+  font-size:40rpx;
+
+}
+
+.sec-time{
+  margin-top:40rpx;
+  margin-left:40rpx;
+  font-size:35rpx;
+}
+

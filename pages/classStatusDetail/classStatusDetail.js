@@ -153,7 +153,22 @@ Page({
       tooltip: {
         show: true,
         trigger: 'axis',
-        formatter: "{b} \n {c0} %"
+        position: function (point, params, dom, rect, size) {
+          var x = 0; // x坐标位置
+          var y = 5; // y坐标位置
+          // 当前鼠标位置
+          var pointX = point[0];
+          var pointY = point[1];
+          var boxWidth = size.contentSize[0];
+          var boxHeight = size.contentSize[1];
+          if (boxWidth > pointX) {
+            x = pointX + 20;
+          } else {
+            x = pointX - boxWidth - 20;
+          }
+          return [x, y];
+        },
+        formatter: "时间：{b} \n平均：{c0} \n最好：{c1}\n最差:{c2} "
       },
       xAxis: {
         type: 'category',

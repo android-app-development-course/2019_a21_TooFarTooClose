@@ -5,9 +5,6 @@
   flex-direction: column;
 }
 
-page{
-  background: #3F016B;
-}
 
 .profile-area{
   margin-top:20rpx;
@@ -57,7 +54,7 @@ page{
   margin-top:25rpx;
   width:670rpx;
   
-  background:#9370DB;
+  background:#87CEFA;
   text-align: left;
   border-radius: 20rpx;
   border-bottom-right-radius:10rpx,gray;
@@ -85,10 +82,8 @@ page{
   margin-bottom: 25rpx;
   width:650rpx;
   height:170rpx;
-  border:4rpx solid gray;
   border-radius:10rpx;
-  border-bottom-right-radius:10rpx,gray;
-  background:#9370DB;
+  background:#87CEFA;
 }
 
 .item-up{

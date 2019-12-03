@@ -89,6 +89,7 @@ swiper image{
 .swiper-box .item{
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family:"Microsoft YaHei";
   color:#FFA500;
 }
 

@@ -74,7 +74,7 @@ page{
   margin:5% 20rpx 5%;
   height:400rpx;
   width:90%;
-  background: #FFFFFF;
+  background: #AFEEEE;
   border-radius: 10rpx;
 }
 

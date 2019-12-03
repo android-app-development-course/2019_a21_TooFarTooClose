@@ -14,7 +14,7 @@
 }
 
 .form-area{
-  background: #7B68EE;
+  background: #87CEFA;
   border-radius: 5px;
   margin-top:100rpx;
   width:600rpx;

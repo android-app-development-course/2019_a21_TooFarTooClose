@@ -1,7 +1,6 @@
 {
   "pages": [
     
-    
     "pages/index/index",
     "pages/login/login",
     "pages/signin/signin",
@@ -24,7 +23,7 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#3F016B",
+    "navigationBarBackgroundColor": "#4682B4",
     "navigationBarTitleText": "Status",
     "navigationBarTextStyle": "white"
   },
@@ -33,7 +32,7 @@
     "color": "#ffffff",
     "selectedColor": "#C0C0C0",
     "borderStyle": "white",
-    "backgroundColor": "#3F016B",
+    "backgroundColor": "#4682B4",
     "list": [
       {
         "text": "首页",

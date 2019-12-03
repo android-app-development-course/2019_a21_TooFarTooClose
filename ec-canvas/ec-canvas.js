@@ -56,8 +56,15 @@ Component({
         if (typeof callback === 'function') {
           this.chart = callback(canvas, res.width, res.height);
         }
-        else if (this.data.ec && this.data.ec.onInit) {
+        else if (this.data.ec && typeof this.data.ec.onInit === 'function') {
           this.chart = this.data.ec.onInit(canvas, res.width, res.height);
+        }
+        else {
+          this.triggerEvent('init', {
+            canvas: canvas,
+            width: res.width,
+            height: res.height
+          });
         }
       }).exec();
     },
@@ -66,48 +73,63 @@ Component({
       if (!opt.canvasId) {
         opt.canvasId = this.data.canvasId;
       }
-      
+
       ctx.draw(true, () => {
         wx.canvasToTempFilePath(opt, this);
       });
     },
 
     touchStart(e) {
-      if (!this.data.ec.disableTouch && this.chart && e.touches.length > 0) {
+      if (this.chart && e.touches.length > 0) {
         var touch = e.touches[0];
-        this.chart._zr.handler.dispatch('mousedown', {
+        var handler = this.chart.getZr().handler;
+        handler.dispatch('mousedown', {
           zrX: touch.x,
           zrY: touch.y
         });
-        this.chart._zr.handler.dispatch('mousemove', {
+        handler.dispatch('mousemove', {
           zrX: touch.x,
           zrY: touch.y
         });
+        handler.processGesture(wrapTouch(e), 'start');
       }
     },
 
     touchMove(e) {
-      if (!this.data.ec.disableTouch && this.chart && e.touches.length > 0) {
+      if (this.chart && e.touches.length > 0) {
         var touch = e.touches[0];
-        this.chart._zr.handler.dispatch('mousemove', {
+        var handler = this.chart.getZr().handler;
+        handler.dispatch('mousemove', {
           zrX: touch.x,
           zrY: touch.y
         });
+        handler.processGesture(wrapTouch(e), 'change');
       }
     },
 
     touchEnd(e) {
-      if (!this.data.ec.disableTouch && this.chart) {
+      if (this.chart) {
         const touch = e.changedTouches ? e.changedTouches[0] : {};
-        this.chart._zr.handler.dispatch('mouseup', {
+        var handler = this.chart.getZr().handler;
+        handler.dispatch('mouseup', {
           zrX: touch.x,
           zrY: touch.y
         });
-        this.chart._zr.handler.dispatch('click', {
+        handler.dispatch('click', {
           zrX: touch.x,
           zrY: touch.y
         });
+        handler.processGesture(wrapTouch(e), 'end');
       }
     }
   }
 });
+
+function wrapTouch(event) {
+  for (let i = 0; i < event.touches.length; ++i) {
+    const touch = event.touches[i];
+    touch.offsetX = touch.x;
+    touch.offsetY = touch.y;
+  }
+  return event;
+}

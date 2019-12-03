@@ -25,6 +25,14 @@ Page({
     avgScore: 0,//平均专注度
     dailyGraphNotshow: true, //“上一节课”按钮不可用
     skey:"",
+    highScore:0,
+    lowScore:0,
+    allAvgScore:0,
+    highTime:"",
+    lowTime:"",
+    highColor:"#000000",
+    lowColor:"#000000",
+    avgColor:"#000000",
     ec: {
       lazyLoad: true // 延迟加载
     }
@@ -33,13 +41,46 @@ Page({
 
   getAvg: function () {
     let avg = 0;
+    let max=0;
+    let min=100;
+    let maxTime="";
+    let minTime="";
     for (var i = 0; i < y.length; i++) {
+      if (y[i]>max){
+        max=y[i];
+        maxTime=x[i];
+      }
+      if(y[i]<min){
+        min=y[i];
+        minTime=x[i];
+      }
       avg += y[i];
     }
     avg = avg / y.length
     this.setData({
-      avgScore: Math.floor(avg)
+      highScore:max,
+      highTime:maxTime,
+      lowScore:min,
+      lowTime:minTime,
+      avgScore:Math.floor(avg),
+      allAvgScore:Math.floor(avg)
     })
+    this.setData({
+      highColor:this.changeColor(this.data.highScore),
+      lowColor: this.changeColor(this.data.lowScore),
+      avgColor: this.changeColor(this.data.allAvgScore),
+    })
+    
+  },
+
+  changeColor:function(score){
+    if(score<60){
+      return "red"
+    }else if(score<80){
+      return "yellow"
+    }else{
+      return "green"
+    }
   },
 
   /**
@@ -51,17 +92,14 @@ Page({
       skey:wx.getStorageSync("skey"),
       class_id: 1
     })
-    this.echartsComponnet = this.selectComponent('#mychart-dom-line');
-    
     
   },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.echartsComponnet = this.selectComponent('#mychart-dom-line');
     this.getTimeData('d')//获取数据
   },
 
@@ -97,9 +135,8 @@ Page({
         x = res.data['x']
         y = res.data['y']
         wx.hideLoading()
-        if(type=='d'){
-          that.getAvg()
-        }
+        that.getAvg()
+        
       
         //如果是第一次绘制
         if (!Chart) {
@@ -149,7 +186,22 @@ Page({
       tooltip: {
         show: true,
         trigger: 'axis',
-        formatter: "{b} \n {c0} %"
+        position: function (point, params, dom, rect, size) {
+          var x = 0; // x坐标位置
+          var y = 5; // y坐标位置
+          // 当前鼠标位置
+          var pointX = point[0];
+          var pointY = point[1];
+          var boxWidth = size.contentSize[0];
+          var boxHeight = size.contentSize[1];
+          if (boxWidth > pointX) {
+            x = pointX + 20;
+          } else {
+            x = pointX - boxWidth - 20;
+          }
+          return [x, y];
+        },
+        formatter: "时间：{b} \n 记录值：{c}"
       },
       xAxis: {
         type: 'category',

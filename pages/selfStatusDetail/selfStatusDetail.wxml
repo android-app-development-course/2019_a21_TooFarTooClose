@@ -17,9 +17,26 @@
 </view>
 
 <view class="score-text-box">
-  <view class="sec-brand">
+  <view class="page-col">
+    <view class="page-row">
+      <view class="sec-brand">最高得分：</view>
+      <view class="sec-score" style="color:{{highColor}}">{{highScore}}</view>
+      <view class="divLine-col"></view>
+      <view class="sec-time">时间：{{highTime}}</view>
+    </view>
+    <view class="page-row">
+      <view class="sec-brand">最低得分：</view>
+      <view class="sec-score" style="color:{{lowColor}}">{{lowScore}}</view>
+      <view class="divLine-col"></view>
+      <view class="sec-time">时间：{{lowTime}}</view>
+    </view>
+    <view class="page-row">
+      <view class="sec-brand">所有平均：</view>
+      <view class="sec-score" style="color:{{avgColor}}">{{allAvgScore}}</view>
+    </view>
 
   </view>
+
 </view>
 
 
