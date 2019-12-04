@@ -162,6 +162,9 @@ Page({
         if(loginRes.code){
           wx.request({
             url:'http://127.0.0.1/StatusWeChatServer/signin.php',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
             data:{
               code:loginRes.code,
               phone:that.data.phone,
@@ -169,7 +172,7 @@ Page({
               name:that.data.name,
               identity:that.data.identity
             },
-            method:"GET",
+            method:"POST",
             dataType:'json',
             success:function(res){
               that.setData({
@@ -253,7 +256,7 @@ Page({
       data: {
         phone: that.data.phone,
       },
-      method: "GET",
+      method: "POST",
       dataType: 'json',
       success: function (res) {
         console.log(res)

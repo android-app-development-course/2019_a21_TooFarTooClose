@@ -15,7 +15,7 @@
 .max-box{
   display: flex;
   align-items: center;
-  justify-content: center;  
+  /* justify-content: center;  */
   margin-top:50rpx;
   
   width:90%;
@@ -25,7 +25,8 @@
 .max-form{
   background: #FFFFFF;
   border-radius: 20rpx;
-  height:650rpx;
+  padding-top:40rpx;
+  height:670rpx;
   width:90%;
 }
 
@@ -66,6 +67,12 @@
 input{
   margin-bottom:20rpx;
   border-bottom: 1px solid gray;
+  width:80%;
+  margin-left:10%;
+}
+
+.num-sliser{
+  zoom:0.7;
   width:80%;
   margin-left:10%;
 }

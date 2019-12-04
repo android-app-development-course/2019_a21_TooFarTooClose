@@ -32,12 +32,15 @@ Page({
         if (loginRes.code){
           wx.request({
             url: 'http://127.0.0.1/StatusWeChatServer/login.php',
+            header: {
+              "content-type": "application/x-www-form-urlencoded"
+            },
             data: {
               code: loginRes.code,
-              id: that.data.id,
+              phone: that.data.id,
               pwd: util.hexMD5(that.data.pwd),
             },
-            method: "GET",
+            method: "POST",
             dataType: 'json',
             success: function (res) {
               if(res.data.length>0){

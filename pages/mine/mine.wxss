@@ -11,7 +11,7 @@
   border-radius: 10rpx;
   width:670rpx;
   height:400rpx;
-  background: url(http://127.0.0.1/StatusWeChatServer/imgs/bg_profile.jpg) no-repeat;
+  background: url(http://127.0.0.1/StatusWeChatServer/imgs/bg_profile.png) no-repeat;
 }
 
 .head-photo{
@@ -29,15 +29,16 @@
 }
 
 .name{
-  font-family: "YouYuan";
+  font-family: "Microsoft YaHei";
   font-size:40rpx;
-  font-weight:bold;
+  font-weight:bolder;
 }
 
 .identity{
   margin-top:20rpx;
   font-family: "KaiTi";
   font-size: 35rpx;
+  font-weight:bold;
 }
 
 

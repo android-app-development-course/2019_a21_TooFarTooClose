@@ -8,7 +8,7 @@ Page({
     skey:"",
     class_title:"",
     class_intro:"",
-    maax_num:0,
+    max_num:10,
     tempFilePaths:"",
     
   },
@@ -20,24 +20,46 @@ Page({
     
   },
 
-  formSubmit:function(){
+  //获取班级人数
+  sliderChange: function (e) {
+    this.setData({
+      max_num:e.detail.value
+    })
+  },
+
+  formSubmit:function(e){
     let that=this
-    let { class_title, class_intro, max_num } = e.detail.value;
+    let { class_title, class_intro} = e.detail.value;
     this.setData({
       class_title,
       class_intro,
-      max_num
     })
+
+    if(that.data.class_title.length==0){
+      wx.showToast({
+        title: '请输入课程名称',
+        icon:'none',
+      })
+      return;
+    }
+    if (that.data.tempFilePaths.length==0){
+      wx.showToast({
+        title: '请选择封面图',
+        icon:'none',
+      })
+      return;
+    }
 
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/newClass.php',
+      
       data: {
         skey: wx.getStorageSync('skey'),
         class_title:that.data.class_title,
         class_intro:that.data.class_intro,
         max_num:that.data.max_num
       },
-      method: 'GET',
+      method: 'POST',
       dataType: 'json',
       success:function(res){
         wx.showToast({
@@ -54,7 +76,7 @@ Page({
       count:1,
       success(res){
         that.setData({
-          tempFilePaths:res.tempFilePaths
+          tempFilePaths:res.tempFilePaths[0]
         })
       }
     })

@@ -29,8 +29,6 @@ Page({
       skey:wx.getStorageSync('skey')
     })
 
-    this.getIfJoin();
-
     this.getClassDetail();
 
     //决定是否显示“加入课程”按键******************注意此处可能在获取到identity前就进行判断造成错误
@@ -71,10 +69,15 @@ Page({
   //获取课程信息
   getClassDetail:function(){
     let that=this;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/classDetail.php',
       data:{
-        id:that.data.class_id
+        class_id:that.data.class_id,
+        skey: that.data.skey,
+        identity: that.identity
       },
       method: "GET",
       dataType: 'json',
@@ -82,25 +85,37 @@ Page({
         console.log(res.data)
         that.setData({
           classTitle:res.data[0]['class_name'],
-          classTeacher:res.data[0]['teacher'],
+          classTeacher:res.data[0]['teacher_name'],
           titleImgUrl:res.data[0]['img_url'],
           classIntro:res.data[0]['class_intro'],
           classGonggao: res.data[0]['class_gonggao'],
           running:parseInt(res.data[0]['running']),
-          joinable:parseInt(res.data[0]['joinable'])
+          joinable:parseInt(res.data[0]['joinable']),
+          hasJoin:parseInt(res.data[0]['has_join'])
         })
         if(that.data.joinable==0){
           that.setData({
             show_join_btn: 0
           })
         }
-        
+        if (that.data.hasJoin != '0') {
+          that.setData({
+            show_join_btn: 0
+          })
+        wx.hideLoading()
+        }
+      },
+      finally:function(){
+        wx.hideLoading()
       }
     })
   },
 
   joinClass:function(){
     let that=this;
+    wx.showLoading({
+      title: '正在加入',
+    })
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/joinClass.php',
       data:{
@@ -110,6 +125,7 @@ Page({
       method: "GET",
       dataType: 'json',
       success: function (res) {
+        wx.hideLoading()
         if (res.data=='1'){
           wx.showToast({
             title: "成功加入",

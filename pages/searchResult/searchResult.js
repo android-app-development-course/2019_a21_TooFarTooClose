@@ -15,6 +15,9 @@ Page({
   //得到查询结果
   getResult:function(){
     let that=this;
+    wx.showLoading({
+      title: '查找中',
+    })
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/searchCourse.php',
       data:{
@@ -23,7 +26,7 @@ Page({
       method: "GET",
       dataType: 'json',
       success: function (res) {
-        
+        wx.hideLoading()
         that.setData({
           resultArray: res.data,
         })
@@ -36,7 +39,10 @@ Page({
         })
         console.log(that.data.items)
       },
-      fail(err){console.log(err)}
+      fail(err){
+        wx.hideLoading()
+        console.log(err)
+      }
     })
   },
 

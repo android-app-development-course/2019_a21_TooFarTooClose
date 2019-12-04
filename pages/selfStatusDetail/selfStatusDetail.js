@@ -10,8 +10,6 @@ const app = getApp();     // 取得全局App
 
 
 Page({
-
-
   /**
    * 页面的初始数据
    */

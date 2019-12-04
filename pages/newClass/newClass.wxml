@@ -14,7 +14,7 @@
     <text class="item-brand">课程名称</text>
     <input name="class_title"></input>
     <text class="item-brand">课程容量</text>
-    <input name="max_num"></input>
+    <slider class="num-sliser" bindchange="sliderChange" min="10" max="200" value="{{max_num}}" show-value></slider>
     <text class="item-brand">课程介绍</text>
     <textarea name="class_intro" class="class-intro"></textarea>
     
