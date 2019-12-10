@@ -10,14 +10,14 @@
 
 <view class="page-col">
   <view class="result-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
-    <view class="result-item page-row " bindtap="toDetail" data-index="{{items['class_id']}}">
+    <view class="result-item page-row " bindtap="toDetail" data-index="{{items['course_id']}}">
       <image class="title-img" src="{{items['img_url']}}" mode="aspectFill"></image>
       <view class="page-col">
-        <view class="result-title">{{items['class_name']}}</view>
+        <view class="result-title">{{items['course_name']}}</view>
         <view class="page-row">
-          <view class="result-teacher" >教师：{{items['teacher']}}</view>
-          <view class="result-isrunning" wx:if="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
-          <view class="result-isnotrunning" wx:else="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+          <view class="result-teacher" >教师：{{items['teacher_name']}}</view>
+          <view class="result-isrunning" wx:if="{{items['course_status']}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+          <view class="result-isnotrunning" wx:else="{{items['course_status']}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
           <view class="result-isjoinable" wx:if="{{items['joinable']}}"><icon class="status-icon iconfont icon-shixinyuanxing">可加入</icon></view>
           <view class="result-isnotjoinable" wx:else="{{items['joinable']}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可加入</icon></view>
         </view>

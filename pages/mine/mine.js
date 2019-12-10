@@ -61,7 +61,10 @@ Page({
       data:{
         skey:wx.getStorageSync('skey')
       },
-      method: "GET",
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      method: "POST",
       dataType: 'json',
       success:function(res){
         that.setData({

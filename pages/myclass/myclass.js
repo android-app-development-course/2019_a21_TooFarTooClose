@@ -40,7 +40,10 @@ Page({
         skey:wx.getStorageSync('skey'),
         identity:wx.getStorageSync('identity')
       },
-      method: 'GET',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      method: 'POST',
       dataType: 'json',
       success: function (res) {
         //返回的json数组结果中包含：running，class_name，teacher，img_url

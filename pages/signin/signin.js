@@ -17,8 +17,8 @@ Page({
     pwdCheck:false,
     idCheck:false,
     uniqueCkeck:false,
-    identity:0,
-    skey:"",
+    account_type:0,
+    uid:"",
     v:"",
     currentTime: 61,
     yanzheng_answer:"",
@@ -26,7 +26,7 @@ Page({
   },
 
   formSubmit:function(e){
-    let {phone,name,pwd,identity}=e.detail.value;
+    let {phone,name,pwd,account_type}=e.detail.value;
     if(name.length==0){
       wx.showToast({
         title: "请输入姓名",
@@ -76,7 +76,7 @@ Page({
       phone,
       name,
       pwd,
-      identity
+      account_type
     })
     //向服务器发送请求
     this.getSigninInfo();
@@ -107,7 +107,10 @@ Page({
         data:{
           phone:that.data.phone
         },
-        method: "GET",
+        header: {
+          "Content-Type": "multipart/form-data"
+        },
+        method: "POST",
         dataType: 'json',
         success: function (res) {
           wx.showToast({
@@ -119,9 +122,7 @@ Page({
             yanzheng_answer: res.data.toString(),
             yanzhengDisable:true
           })
-          
-          
-          
+
         },
         fail(err) { console.log(err) }
       })
@@ -157,51 +158,45 @@ Page({
   //登录
   getSigninInfo:function(){
     var that=this;
-    wx.login({
-      success:function(loginRes){
-        if(loginRes.code){
-          wx.request({
-            url:'http://127.0.0.1/StatusWeChatServer/signin.php',
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data:{
-              code:loginRes.code,
-              phone:that.data.phone,
-              pwd: util.hexMD5(that.data.pwd),
-              name:that.data.name,
-              identity:that.data.identity
-            },
-            method:"POST",
-            dataType:'json',
-            success:function(res){
-              that.setData({
-                skey: res.data
-              });
-              //以同步方式存储skey等信息
-              try{
-                wx.setStorageSync('skey', that.data.skey);
-                wx.setStorageSync('phone', that.data.phone);
-                wx.setStorageSync('name', that.data.name);
-                wx.setStorageSync('identity', that.data.identity);
-              }catch(e){
-                wx.showToast({
-                  title: e.err,
-                  icon: "none",
-                  duration: 1000,
-                  mask: true
-                })
-              }
-              wx.switchTab({
-                url: '../index/index'
-              })
-            },
-            fail(err){console.log(err)},
-            complete:function(){}
+    wx.request({
+      url:'http://127.0.0.1/StatusWeChatServer/signin.php',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      data:{
+        phone:that.data.phone,
+        pwd: util.hexMD5(that.data.pwd),
+        name:that.data.name,
+        account_type:that.data.account_type
+      },
+      method:"POST",
+      dataType:'json',
+      success:function(res){
+        that.setData({
+          uid: res.data
+        });
+        //以同步方式存储 uid等信息
+        try{
+          wx.setStorageSync(' uid', that.data.uid);
+          wx.setStorageSync('phone', that.data.phone);
+          wx.setStorageSync('name', that.data.name);
+          wx.setStorageSync('account_type', that.data.account_type);
+        }catch(e){
+          wx.showToast({
+            title: e.err,
+            icon: "none",
+            duration: 1000,
+            mask: true
           })
         }
-      }
-    });
+        wx.switchTab({
+          url: '../index/index'
+        })
+      },
+      fail(err){console.log(err)},
+      complete:function(){}
+    })
+
   },
 
   phoneInput:function(e){
@@ -253,6 +248,9 @@ Page({
     let that=this;
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/phoneCheck.php',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
       data: {
         phone: that.data.phone,
       },

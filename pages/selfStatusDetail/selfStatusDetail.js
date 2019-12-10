@@ -120,7 +120,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/getSelfTimeScore.php',
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "multipart/form-data"
       },
       data: {
         class_id: that.data.class_id,
