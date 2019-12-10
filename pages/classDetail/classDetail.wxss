@@ -59,10 +59,16 @@ page{
   height: 2rpx;
 }
 
-.item-area{
+.item-area-stu{
+  margin:20rpx 60rpx 20rpx;
+  text-align: center;
+}
+
+.item-area-tea{
   margin:20rpx 30rpx 20rpx;
   text-align: center;
 }
+
 
 .title-text{
   font-size:28rpx;

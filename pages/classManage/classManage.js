@@ -5,26 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    class_id:0,
+    course_id:0,
     joinable:true,
+    max_num:10,
     delBtnWidth: 180,
+    notice_text:"",
     items:{},
   },
-
-  /** 注意：
-   * 未完成：基本设置与后台通信
-   * 课程公告与后台通信
-   * 学生列表删除与后台通信
-   */
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      class_id:options['class_id'],
+      course_id:options['course_id'],
     })
     this.loadStudentList();
+    this.getClassManageInfo();
   },
 
   //加载学生列表
@@ -33,7 +30,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/studentList.php',
       data:{
-        class_id:that.data.class_id
+        course_id:that.data.course_id
       },
       method: 'GET',
       dataType: 'json',
@@ -45,9 +42,67 @@ Page({
     })
   },
 
-  //加载课堂基本设置
-  loadClassBasicManage:function(){
+  switchChange:function(e){
+    this.setData({
+      joinable:e.detail.value
+    })
+  },
 
+  sliderChange: function (e) {
+    this.setData({
+      max_num: e.detail.value
+    })
+  },
+
+  textareaChange:function(e){
+    this.setData({
+      notice_text:e.detail.value
+    })
+  },
+
+
+  //上传基本信息的更改
+  uploadChange:function(){
+    let that=this
+    let joinable
+    if(that.data.joinable){
+      joinable=1
+    }else{
+      joinable=0
+    }
+    wx.request({
+      url: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+      method: 'POST',
+      header: {
+        "content-type": "multipart/form-data"
+      },
+      data:{
+        course_id:that.data.course_id,
+        joinable:joinable,
+        notice_text:that.data.notice_text,
+        max_num: that.data.max_num
+      },
+      dataType: 'json',
+      success:function(res){
+        if (res.data.hasOwnProperty('error_code')) {
+          wx.showToast({
+            title: '服务器错误',
+            icon: "none"
+          })
+          return
+        }
+        wx.showToast({
+          title: '更改成功',
+          icon:"none"
+        })
+      },
+      fail:function(err){
+        wx.showToast({
+          title: err,
+          icon: "none"
+        })
+      }
+    })
   },
 
   getClassManageInfo:function(){
@@ -55,12 +110,37 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/manageInfo.php',
       data:{
-        class_id:that.data.class_id
+        course_id:that.data.course_id
       },
-      method: 'GET',
+      method: 'POST',
+      header:{
+        "content-type":"multipart/form-data"
+      },
       dataType: 'json',
       success:function(res){
-
+        let joinable=res.data[0]['joinable']
+        let max_num=parseInt(res.data[0]['max_num'])
+        let notice_text=res.data[0]['notice_text']
+        if (joinable==1){
+          that.setData({
+            joinable: true,
+            max_num: max_num,
+            notice_text: notice_text
+          })
+        }else{
+          that.setData({
+            joinable: false,
+            max_num: max_num,
+            notice_text: notice_text
+          })
+        }
+        
+      },
+      fail:function(err){
+        wx.showToast({
+          title: err,
+          icon:"none"
+        })
       }
     })
   },
@@ -145,7 +225,7 @@ Page({
   delItem: function (e) {
     //获取列表中要删除项的下标
     var index = e.target.dataset.index;
-    if(!sendDel(index)){
+    if(!this.sendDel(index)){
       return
     }
     var items = this.data.items;
@@ -158,59 +238,41 @@ Page({
   },
  
   sendDel:function(index){
+    let that=this;
     wx.showModal({
       title: '提示',
       content: '确认要移除该学生?',
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
-
           wx.request({
-
             url: getApp().globalData.urlPath + "spendingType/delete",
-            method: "POST",
-            data: {
-              typeId: typeId
-            },
+            method: 'POST',
             header: {
-              "Content-Type": "application/x-www-form-urlencoded"
+              "content-type": "multipart/form-data"
+            },
+            data: {
+              course_id:that.data.course_id,
+              skey:that.data.items[index]['skey']
             },
             success: function (res) {
-              console.log(res.data.code);
-              if (res.statusCode == 200) {
-
-                //访问正常
-                if (res.data.code == "000000") {
-                  wx.showToast({
-                    title: "删除成功，返回支出类型列表",
-                    icon: 'success',
-                    duration: 3000,
-                    success: function () {
-
-                    }
-                  })
-
-                }
-                return true;
-              } else {
-
-                wx.showLoading({
-                  title: '系统异常',
-                  fail
+              if (res.data.hasOwnProperty('error_code')){
+                wx.showToast({
+                  title: '服务器错误',
+                  icon:"none"
                 })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000)
-                return false;
+                return false
               }
-
+              wx.showToast({
+                title: '删除成功',
+                icon:"success"
+              })
+              return true
             }
           })
-
-
         } else if (res.cancel) {
           console.log('用户点击取消')
+          return false
         }
       }
     })

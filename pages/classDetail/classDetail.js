@@ -5,16 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    class_id:"",
+    course_id:"",
     classTitle:"",
     classTeacher:"",
     titleImgUrl:"",
     classIntro:"",
     classGonggao:"",
-    skey:"",
-    running:0,
+    uid:"",
+    course_status:0,
     joinable:0,
-    identity:0,
+    account_type:0,
     hasJoin:0,
     show_join_btn:1,
   },
@@ -24,15 +24,15 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      class_id: options['class_id'],
-      identity:parseInt(wx.getStorageSync('identity')),
-      skey:wx.getStorageSync('skey')
+      course_id: options['course_id'],
+      account_type:parseInt(wx.getStorageSync('account_type')),
+      uid:wx.getStorageSync('uid')
     })
 
     this.getClassDetail();
 
-    //决定是否显示“加入课程”按键******************注意此处可能在获取到identity前就进行判断造成错误
-    if (this.data.identity == 1 ){
+    //决定是否显示“加入课程”按键******************注意此处可能在获取到account_type前就进行判断造成错误
+    if (this.data.account_type == 1 ){
       this.setData({
         show_join_btn:0
       })
@@ -43,14 +43,17 @@ Page({
   //检查是否已经加入过该课程
   getIfJoin:function(){
     let that=this;
-    wx,wx.request({
+    wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/ifJoin.php',
       data:{
-        skey:that.data.skey,
-        class_id:that.data.class_id,
-        identity:that.identity
+        uid:that.data.uid,
+        course_id:that.data.course_id,
+        account_type:that.account_type
       },
-      method: 'GET',
+      header:{
+        "Content-Type": "multipart/form-data"
+      },
+      method: 'POST',
       dataType: 'json',
       success: function(res) {
         console.log(res.data)
@@ -75,23 +78,26 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/classDetail.php',
       data:{
-        class_id:that.data.class_id,
-        skey: that.data.skey,
-        identity: that.identity
+        course_id:that.data.course_id,
+        uid: that.data.uid,
+        account_type: that.account_type
       },
-      method: "GET",
+      header:{
+        "Content-Type": "multipart/form-data"
+      },
+      method: "POST",
       dataType: 'json',
       success: function (res) {
         console.log(res.data)
         that.setData({
-          classTitle:res.data[0]['class_name'],
+          classTitle:res.data[0]['course_name'],
           classTeacher:res.data[0]['teacher_name'],
           titleImgUrl:res.data[0]['img_url'],
-          classIntro:res.data[0]['class_intro'],
+          classIntro:res.data[0]['introduction_text'],
           classGonggao: res.data[0]['class_gonggao'],
-          running:parseInt(res.data[0]['running']),
+          course_status:parseInt(res.data[0]['course_status']),
           joinable:parseInt(res.data[0]['joinable']),
-          hasJoin:parseInt(res.data[0]['has_join'])
+          hasJoin:parseInt(res.data[0]['had_join'])
         })
         if(that.data.joinable==0){
           that.setData({
@@ -119,14 +125,17 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/joinClass.php',
       data:{
-        skey: that.data.skey,
-        class_id:that.data.class_id
+        uid: that.data.uid,
+        course_id:that.data.course_id
       },
-      method: "GET",
+      header:{
+        "Content-Type": "multipart/form-data"
+      },
+      method: "POST",
       dataType: 'json',
       success: function (res) {
         wx.hideLoading()
-        if (res.data=='1'){
+        if (res.data['status_code']=='1'){
           wx.showToast({
             title: "成功加入",
             icon: "success",
@@ -158,31 +167,26 @@ Page({
 
   toClassStatusDetail:function(){
     wx.navigateTo({
-      url: '../classStatusDetail/classStatusDetail?class_id=' + this.data.class_id
+      url: '../classStatusDetail/classStatusDetail?course_id=' + this.data.course_id
     })
   },
 
   toHomework:function(){
     wx.navigateTo({
-      url: '../homework/homework?class_id='+this.data.class_id
+      url: '../homework/homework?course_id='+this.data.course_id
     })
   },
 
   toClassResource:function(){
     wx.navigateTo({
-      url: '../classResource/classResource?class_id=' + this.data.class_id
+      url: '../classResource/classResource?course_id=' + this.data.course_id
     })
   },
 
-  toMail:function(){
-    wx.navigateTo({
-      url: '../mailEdit/mailEdit?receiver_id=' + this.data.class_id + '&receiver=' + classTeacher
-    })
-  },
 
   toClassManage:function(){
     wx.navigateTo({
-      url: '../classManage/classManage?class_id='+this.class_id
+      url: '../classManage/classManage?course_id='+this.course_id
     })
   }
 })

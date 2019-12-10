@@ -19,10 +19,8 @@
           <text class="resource-title-brand">标题:</text>
           <input class="resource-title" name="resourceTitle" placeholder="输入资源标题" placeholder-class="phcolor"></input>
         </view>
-        <picker mode="date" value="{{deadline}}"  start="{{nowDate}}" end="2999-12-30" bindchange="bindDateChange">
-          <view class="date-picker">上传资源(点击选择): {{tempfiles['name']}}</view>
-        </picker>
-        <button class="submit-btn" bindtap="uploadResource">上传</button>
+        <view class="file-picker" bindtap="pickResource">上传资源(点击选择)</view>
+        <button class="submit-btn" form-type="submit" >上传</button>
       </form>
   </view>
 </view>

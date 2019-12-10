@@ -13,15 +13,15 @@
     <text class="add-homework">收起</text>
   </view>
   <view class="edit-homework-area" hidden="{{openDropdown==0}}">
-      <form bindsubmit="uploadHomework">
+      <form bindsubmit="newHomework">
         <view class="page-row" >
           <text class="homework-title-brand">标题:</text>
-          <input class="homework-title" name="homeworkTitle" placeholder="输入作业标题" placeholder-class="phcolor"></input>
+          <input class="homework-title" name="homeworkTitle" placeholder="输入作业标题" placeholder-class="phcolor" maxlength="15"></input>
         </view>
         <picker mode="date" value="{{deadline}}"  start="{{nowDate}}" end="2999-12-30" bindchange="bindDateChange">
           <view class="date-picker">截止日期(点击选择): {{deadline}}</view>
         </picker>
-        <button class="submit-btn" bindtap="uploadHomework">发布作业</button>
+        <button class="submit-btn" form-type="submit">发布作业</button>
       </form>
   </view>
 </view>
@@ -32,7 +32,7 @@
 
 <view class="item-box" wx:if="{{identity==0}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
 
-  <view class="homework-item page-row" bindtap="toComplete" data-index="{{items['homework_id']}}">
+  <view class="homework-item page-row" bindtap="uploadHomework" data-index="{{items['homework_id']}}">
     <view class="item-left">
       <view class="item-title">{{items['homework_title']}}</view>
       <view class="page-row">
@@ -43,8 +43,8 @@
       
     </view>
     <view class="item-right page-row">
-      <text class="goto-complete" wx:if="{{items['has_complete']==1}}">修改</text>
-      <text class="goto-complete" wx:else="{{items['has_complete']}}">提交</text>
+      <text class="goto-complete"  wx:if="{{items['has_complete']==1}}">修改</text>
+      <text class="goto-complete"  wx:else="{{items['has_complete']}}">提交</text>
       <icon class="iconfont icon-rightarrow"></icon>
     </view>
 

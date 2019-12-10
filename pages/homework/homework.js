@@ -21,16 +21,26 @@ Page({
       url: 'http://127.0.0.1/StatusWeChatServer/homework.php',
       data:{
         class_id:that.data.class_id,
-        skey:that.data.skey
+        skey:that.data.skey,
+        identity:that.data.identity
       },
-      method: 'GET',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      method: 'POST',
       dataType: 'json',
       success: function (res){
-        that.setData({
-          items: res.data
-        })
-        for (let i = 0; i < that.data.items.length; i++) {
-          that.data.items[i]['has_complete'] = parseInt(that.data.items[i]['has_complete']);
+        if(that.data.identity==0){
+          that.setData({
+            items: res.data
+          })
+          for (let i = 0; i < that.data.items.length; i++) {
+            that.data.items[i]['has_complete'] = parseInt(that.data.items[i]['has_complete']);
+          }
+        }else{
+          that.setData({
+            items: res.data
+          })
         }
       }
     })
@@ -47,9 +57,14 @@ Page({
       success(res){
         const tempFilePath=res.tempFilePaths
         wx.uploadFile({
-          url: 'http://127.0.0.1/',//此处应是小程序后台服务器的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
+          url: 'http://127.0.0.1/',//此处应是小程序后台服务器(开发者)的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
           filePath: tempFilePaths[0],
           name: that.data.homework_id+"-"+this.data.skey,
+          formData: { //上传POST参数信息
+            'class_id':that.data.class_id,
+            'skey': that.data.skey,
+            'homework_id':homework_id
+          },
           success(res) { //上传成功回调函数
             const data = res.data
             wx.showToast({
@@ -104,10 +119,17 @@ Page({
   },
 
 
-  uploadHomework:function(){
-    that=this;
+  newHomework:function(e){
+    let that=this;
     let { homeworkTitle } = e.detail.value;
-    this.setData({
+    if(homeworkTitle.length==0){
+      wx.showToast({
+        title: '请输入标题',
+        icon:"none"
+      })
+      return
+    }
+    that.setData({
       homeworkTitle
     })
     wx.request({
@@ -117,14 +139,27 @@ Page({
         homework_title:that.data.homeworkTitle,
         deadline:that.data.deadline
       },
-      method: "GET",
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      method: "POST",
       dataType: 'json',
       success: function (res) {
+        if (res.data[0].hasOwnProperty('error_code')){
+          wx.showToast({
+            title: '发生服务器错误',
+            icon:"none",
+          })
+          return
+        }
         wx.showToast({
-          title: '上传成功',
+          title: '发布成功',
           icon: "none",
           duration: 1000,
           mask: true
+        })
+        that.setData({
+          items:res.data
         })
       },
       fail(err) {

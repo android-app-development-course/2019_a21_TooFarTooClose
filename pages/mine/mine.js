@@ -65,8 +65,8 @@ Page({
       dataType: 'json',
       success:function(res){
         that.setData({
-          dailyScore:parseInt( res.data['dailyScore']),
-          monthlyScore:parseInt( res.data['monthlyScore'])
+          dailyScore:parseInt( res.data[0]['dailyScore']),
+          monthlyScore:parseInt( res.data[0]['monthlyScore'])
         })
         that.changeColor();
       }
@@ -74,9 +74,9 @@ Page({
     
   },
 
-  toMail:function(){
+  toAboutUs:function(){
     wx.navigateTo({
-      url: '../mail/mail'
+      url: '../aboutUs/aboutUs'
     })
   },
 

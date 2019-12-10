@@ -1,0 +1,24 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class="page-row">
+  <icon class="iconfont icon-guanyuwomen"></icon>
+  <text class="brand">关于我们</text>
+</view>
+<view class="max-box">
+  <image class="img-brand" src="{{compay_brand}}"></image>
+  <view class="content-box">
+    <view class="page-col">  
+      <text class="title-fir">版本</text>
+      <text class="content">V1.1</text>
+    </view>
+    <view class="divLineRow"></view>
+    <view class="page-col">
+      <text class="title-fir">简介</text>
+      <text class="content">本程序需要结合“学伴”PC端进行使用，可以查看学生的学习状态得分，并且进行资源、作业的上传、下载</text>
+    </view>
+    <view class="divLineRow"></view>
+    <view class="page-col">
+      <text class="title-fir">开发</text>
+      <text class="content">华南师范大学计算机学院“学伴”项目组</text>
+    </view>
+  </view>
+</view>

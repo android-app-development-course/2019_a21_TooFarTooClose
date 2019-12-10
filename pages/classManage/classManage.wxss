@@ -85,6 +85,17 @@
 
 }
 
+.upload-btn{
+  position: absolute;
+  right:80rpx;
+  top:160rpx;
+  width: 180rpx;
+  height:60rpx;
+  border-radius: 28rpx;
+  background: yellow;
+  font-size: 25rpx;
+}
+
 
 /* ////////////////////// */
 view{

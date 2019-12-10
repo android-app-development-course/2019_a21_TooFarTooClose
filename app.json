@@ -7,9 +7,6 @@
     "pages/classDetail/classDetail",
     "pages/selfinfo/selfinfo",
     "pages/searchResult/searchResult",
-    "pages/mailEdit/mailEdit",
-    "pages/mailDetail/mailDetail",
-    "pages/mail/mail",
     "pages/logs/logs",
     "pages/myclass/myclass",
     "pages/mine/mine",
@@ -19,7 +16,8 @@
     "pages/classEdit/classEdit",
     "pages/classManage/classManage",
     "pages/selfStatusDetail/selfStatusDetail",
-    "pages/classStatusDetail/classStatusDetail"
+    "pages/classStatusDetail/classStatusDetail",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "dark",

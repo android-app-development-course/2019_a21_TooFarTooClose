@@ -37,7 +37,8 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/getClass.php',
       data:{
-        skey:wx.getStorageSync('skey')
+        skey:wx.getStorageSync('skey'),
+        identity:wx.getStorageSync('identity')
       },
       method: 'GET',
       dataType: 'json',

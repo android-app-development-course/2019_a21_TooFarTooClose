@@ -59,6 +59,9 @@ Page({
         class_intro:that.data.class_intro,
         max_num:that.data.max_num
       },
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
       method: 'POST',
       dataType: 'json',
       success:function(res){

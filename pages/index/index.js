@@ -7,9 +7,9 @@ Page({
     inputValue: '',
     imgs:[],
     self_info:{},
-    skey:"",
+    uid:"",
     remindItems:{},
-    identity:0,
+    account_type:0,
     score:0
   },
 
@@ -32,15 +32,15 @@ Page({
 
   onLoad:function(e){
 
-    //检查是否有skey已存储
+    //检查是否有uid已存储
     let that=this;
-    let loginFlag = wx.getStorageSync('skey');
+    let loginFlag = wx.getStorageSync('uid');
     if (loginFlag) {
-      console.log("has skey");
+      console.log("has uid");
       wx.checkSession({
         succss: function () {
           that.setData({
-            skey:loginFlag
+            uid:loginFlag
           })
         },
         fail: function () {
@@ -60,7 +60,10 @@ Page({
     //获取封面图片
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/respondIndexImg.php',
-      method: "GET",
+      method: "POST",
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
       dataType: 'json',
       success: function (res) {
         that.setData({
@@ -69,7 +72,7 @@ Page({
       }
     })
     that.setData({
-      identity: parseInt(wx.getStorageSync('identity'))
+      account_type: parseInt(wx.getStorageSync('account_type'))
     })
 
     this.getHomeworkRemind()
@@ -83,7 +86,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/classScore.php',
       data:{
-        skey:wx.getStorageSync('skey')
+        uid: wx.getStorageSync('uid')
       },
       method: "GET",
       dataType: 'json',
@@ -101,7 +104,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/homeworkRemind.php',
       data:{
-        skey:wx.getStorageSync('skey')
+        uid: wx.getStorageSync('uid')
       },
       method: "GET",
       dataType: 'json',

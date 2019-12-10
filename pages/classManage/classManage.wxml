@@ -13,17 +13,18 @@
     <view class="page-col">
       <view class="page-row" style="margin-top:20rpx;">
         <text class="sec-brand">开放加入</text>
-        <switch class="joinable-switch" checked="{{joinable}}" bindchange="switchChange"></switch>
+        <switch class="joinable-switch" checked="{{joinable}}" bindchange="switchChange" ></switch>
       </view>
       <text class="sec-brand" style="margin-top:20rpx;">课堂容量</text>
-      <slider class="num-sliser" bindchange="slider4change" min="10" max="200" show-value></slider>
+      <slider class="num-sliser" bindchange="sliderChange" min="10" max="200" show-value value="{{max_num}}"></slider>
     </view>
     <view class="page-row">
       <icon class="iconfont icon-gonggao"></icon>
       <text class="basic-manage-brand">课程公告</text>
     </view>
     <view class="page-col">
-      <textarea class="gonggao-textarea" placeholder="输入课程公告" placeholder-class="phcolor">
+      <textarea class="gonggao-textarea" placeholder="输入课程公告" placeholder-class="phcolor" bindinput="textareaChange" value="{{notice_text}}">
+      
       </textarea>
     </view>
   </view>
@@ -42,9 +43,11 @@
     <view wx:for="{{items}}"  wx:key="{{index}}"  class="item">
      
       <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
-      <icon class="iconfont icon-.icon-character-avatar"></icon>{{item.student_name}}</view>
+      <icon class="iconfont icon-.icon-character-avatar"></icon>{{item.name}}</view>
       <view data-index="{{index}}" bindtap = "delItem" class="inner del">移除</view>
     </view>
   </view>
 
 </view>
+
+<button class="upload-btn" bindtap="uploadChange">确认更改</button>

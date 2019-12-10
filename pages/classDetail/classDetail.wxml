@@ -23,21 +23,17 @@
 
   <view class="control-box  page-col" wx:if="{{identity==0}}" hidden="{{hasJoin==0}}">
     <view class="page-row">
-      <view class="item-area page-col">
+      <view class="item-area-stu page-col">
         <icon class="iconfont icon-shuju" bindtap="toSelfStatusDetail"></icon>
         <text class="title-text">专注度数据</text>
       </view>
-      <view class="item-area page-col" bindtap="toHomework">
+      <view class="item-area-stu page-col" bindtap="toHomework">
         <icon class="iconfont icon-zuoye"></icon>
         <text class="title-text">作业</text>
       </view>
-      <view class="item-area page-col" bindtap="toClassResource">
+      <view class="item-area-stu page-col" bindtap="toClassResource">
         <icon class="iconfont icon-ziyuan"></icon>
         <text class="title-text">课程资源</text>
-      </view>
-      <view class="item-area page-col" bindtap="toMail">
-        <icon class="iconfont icon-youjian-copy"></icon>
-        <text class="title-text">发送邮件</text>
       </view>
     </view>
 
@@ -52,19 +48,19 @@
   </view>
 
   <view class="control-box page-row" wx:if="{{identity==1}}" hidden="{{hasJoin==0}}">
-    <view class="item-area page-col">
+    <view class="item-area-tea page-col">
       <icon class="iconfont icon-shuju" bindtap="toClassStatusDetail"></icon>
       <text class="title-text">专注度数据</text>
     </view>
-    <view class="item-area page-col" bindtap="toHomework">
+    <view class="item-area-tea page-col" bindtap="toHomework">
       <icon class="iconfont icon-zuoye"></icon>
       <text class="title-text">作业管理</text>
     </view>
-    <view class="item-area page-col" bindtap="toClassResource">
+    <view class="item-area-tea page-col" bindtap="toClassResource">
       <icon class="iconfont icon-ziyuan"></icon>
       <text class="title-text">课程资源</text>
     </view>
-    <view class="item-area page-col" bindtap="toClassManage">
+    <view class="item-area-tea page-col" bindtap="toClassManage">
       <icon class="iconfont icon-renyuan"></icon>
       <text class="title-text">课程管理</text>
     </view>

@@ -23,7 +23,10 @@ Page({
       data:{
         value:this.data.searchValue
       },
-      method: "GET",
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      method: "POST",
       dataType: 'json',
       success: function (res) {
         wx.hideLoading()
@@ -31,7 +34,7 @@ Page({
           resultArray: res.data,
         })
         for (var j = 0 ; j < that.data.resultArray.length; j++) {
-          that.data.resultArray[j]['running'] = parseInt(that.data.resultArray[j]['running']);
+          that.data.resultArray[j]['course_status'] = parseInt(that.data.resultArray[j]['course_status']);
           that.data.resultArray[j]['joinable'] = parseInt(that.data.resultArray[j]['joinable']);
         }
         that.setData({
@@ -58,10 +61,10 @@ Page({
 
   //点击搜索结果项目后跳转到课程详情页面
   toDetail:function(event){
-    var class_id = event.currentTarget.dataset['index'];
-    console.log("class_id"+class_id)
+    var course_id = event.currentTarget.dataset['index'];
+    console.log("course_id" + course_id)
     wx.navigateTo({
-      url:'../classDetail/classDetail?class_id='+class_id
+      url: '../classDetail/classDetail?course_id=' + course_id
     })
   },
 

@@ -17,7 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    class_id: 0,
+    course_id: 0,
     isPopping: false,//是否已经弹出
     animPlus: {},//旋转动画
     animCollect: {},//item位移,透明度
@@ -41,8 +41,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      // classs_id:options['class_id']
-      class_id: 1
+      // classs_id:options['course_id']
+      course_id: 1
     })
     this.echartsComponnet = this.selectComponent('#mychart-dom-line');
     //this.ecComponent = this.selectComponent('#mychart-dom-line');
@@ -85,10 +85,10 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/getTimeScore.php',
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "multipart/form-data"
       },
       data: {
-        class_id: that.data.class_id,
+        course_id: that.data.course_id,
         type: type
       },
       method: "POST",
@@ -168,7 +168,7 @@ Page({
           }
           return [x, y];
         },
-        formatter: "时间：{b} \n平均：{c0} \n最好：{c1}\n最差:{c2} "
+        formatter: "时间：{b} \n平均：{c0} \n最好：{c1}\n最差: {c2} "
       },
       xAxis: {
         type: 'category',
@@ -247,10 +247,10 @@ Page({
     wx.request({
       url: 'http://127.0.0.1/StatusWeChatServer/getAverageScore.php',
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "multipart/form-data"
       },
       data: {
-        class_id: that.data.class_id,
+        course_id: that.data.course_id,
       },
       method: "POST",
       dataType: 'json',
