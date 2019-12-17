@@ -12,7 +12,12 @@ Page({
     uid:"",
     name:"",
     account_type:0,
-    brand:"http://127.0.0.1/StatusWeChatServer/imgs/brand.jpg",
+    brand:"http://www.hinatazaka46.cn/StatusWeChatServer/imgs/brand.jpg",
+  },
+
+  onLoad: function () {
+    wx.setStorageSync('avatarUrl', "http://www.hinatazaka46.cn/StatusWeChatServer/imgs/notfound_bg.jpg");
+
   },
 
   formSubmit: function (e) {
@@ -27,9 +32,9 @@ Page({
   getLoginInfo:function(){
     let that=this;
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/login.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/login.php',
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
         phone: that.data.id,
@@ -38,12 +43,12 @@ Page({
       method: "POST",
       dataType: 'json',
       success: function (res) {
+        console.log(res.data)
         if(res.data.length>0){
-          console.log(res.data)
+         
           that.setData({
             uid: res.data[0]['uid'],
             name: res.data[0]['name'],
-            id:res.data[0]['phone'],
             account_type:parseInt(res.data[0]['account_type'])
           });
           //以同步方式存储uid等信息
@@ -79,7 +84,16 @@ Page({
   },
 
   onGotUserInfo:function(e){
-    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
+    wx.setStorageSync('avatarUrl', "http://www.hinatazaka46.cn/StatusWeChatServer/imgs/notfound_bg.jpg");
+    if (e.detail.userInfo) {
+      wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
+    } else {
+      
+      wx.showToast({
+        title: '将无法使用头像',
+        icon: "none"
+      })
+    }
   },
 
 

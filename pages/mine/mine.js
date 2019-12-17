@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    identity: 1,   //true指老师，false指学生
+    account_type: 1,   //true指老师，false指学生
     name:"用户名",
     dailyColor:"#000000",
     monthlyColor:"#000000",
     dailyScore:0,
     monthlyScore:0,
     headphoto: "",
-    identity:0
+    account_type:0,
+    reserve_num:3
   },
 
   //更改分数样式颜色
@@ -53,16 +54,16 @@ Page({
     this.setData({
       //headphoto: wx.getStorageSync('avatarUrl'),
       name: wx.getStorageSync('name'),
-      identity: wx.getStorageSync('identity'),
+      account_type: wx.getStorageSync('account_type'),
     })
     
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/getScore.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/getScore.php',
       data:{
-        skey:wx.getStorageSync('skey')
+        uid:wx.getStorageSync('uid')
       },
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       dataType: 'json',

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    compay_brand:"http://127.0.0.1/StatusWeChatServer/imgs/brand.jpg"  //品牌图片url
+    compay_brand:"http://www.hinatazaka46.cn/StatusWeChatServer/imgs/brand.jpg"  //品牌图片url
   },
 
   /**

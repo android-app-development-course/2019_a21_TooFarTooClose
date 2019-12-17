@@ -24,7 +24,7 @@
 }
 
 .profile-content{
-  margin-top:50px;
+  margin-top:120rpx;
   margin-left:130rpx;
 }
 
@@ -42,14 +42,6 @@
 }
 
 
-.page-row{
-   display: flex; 
-  flex-direction: row;
-}
-.page-col{
-   display: flex; 
-  flex-direction: column;
-}
 
 .status-msg{
   margin-top:25rpx;
@@ -79,7 +71,7 @@
 }
 
 .item-box{
-  margin-top:25rpx;
+  margin-top:20rpx;
   margin-bottom: 25rpx;
   width:650rpx;
   height:170rpx;
@@ -126,3 +118,17 @@
   margin-left:70%;
   margin-right:5%;
 }
+
+.to-correct{
+  height:100rpx;
+  margin-top:20rpx;
+  width:650rpx;
+  background: #87CEFA;
+  border-radius: 10rpx;
+  color:#FFFFFF;
+  padding: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+

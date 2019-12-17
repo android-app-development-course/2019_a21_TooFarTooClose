@@ -1,7 +1,7 @@
 <!--pages/myclass/myclass.wxml-->
 <view class="teacher-box">
   <view class="max-box">
-    <view class="add-class {{activeClass}}" bindtap="addClass" bindtouchstart="addClassStart" bindtouchend="addClassEnd" wx:if="{{identity}}">
+    <view class="add-class {{activeClass}}" bindtap="addClass" bindtouchstart="addClassStart" bindtouchend="addClassEnd" wx:if="{{account_type==1}}">
       创建课程
     </view>
   </view>
@@ -9,14 +9,16 @@
   <view class="content-box">
     <icon class="iconfont icon-kecheng content-brand" >所有课程</icon>
     <view class="content-item-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
-      <view class="content-item page-row" bindtap="toClassDetail" data-index="{{items['class_id']}}">
+      <view class="content-item page-row" bindtap="toClassDetail" data-index="{{items['course_id']}}">
         <image class="class-image" src="{{items['img_url']}}" mode="aspectFill"></image>
         <view class="item-right page-col">
-          <view class="class-name">{{items['class_name']}}</view>
-          <view class="teacher-box">教师：<text class="teacher">{{items['teacher']}}</text></view>
-          <view class="result-isrunning" wx:if="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
-          <view class="result-isnotrunning" wx:else="{{items['running']}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
-          <view class="class-intro-box">课程简介:<text class="class-intro">{{items['class_intro']}}</text></view>
+          <view class="class-name">{{items['course_name']}}</view>
+          <view class="teacher-box">教师：<text class="teacher">{{items['teacher_name']}}</text></view>
+          <view class="result-isrunning" wx:if="{{items['course_status']==1}}"><icon class="status-icon iconfont icon-shixinyuanxing">进行中</icon></view>
+          <view class="result-isnotrunning" wx:if="{{items['course_status']==0}}"><icon class="status-icon iconfont icon-shixinyuanxing">未开始</icon></view>
+          <view class="result-iswaiting" wx:if="{{items['course_status']==3}}"><icon class="status-icon iconfont icon-shixinyuanxing">等待中</icon></view>
+          <view class="result-isnotrunning" wx:if="{{items['course_status']==2}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可中途加入</icon></view>
+          <view class="class-intro-box">课程简介:<text class="class-intro">{{items['introduction_text']}}</text></view>
         </view>
       </view>
     </view>

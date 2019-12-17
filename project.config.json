@@ -10,7 +10,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -21,7 +21,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.9.4",
 	"appid": "wxeeae4094ac86f006",
 	"projectname": "status",
 	"debugOptions": {

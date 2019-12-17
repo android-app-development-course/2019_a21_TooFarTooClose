@@ -25,10 +25,10 @@
       </view>
       
       <view class="page-row">
-        <input name="yanzheng" class="yanzheng-input" placeholder-class="phcolor" placeholder="请输入验证码" bindinput="yanzhengInput"/>
+        <input name="yanzheng" class="yanzheng-input" placeholder-class="phcolor" placeholder="请输入验证码" bindinput="yanzhengInput" bindblur="checkYanzheng"/>
         <button class="yanzheng-btn" bindtap="getYanzheng" disabled="{{yanzhengDisable}}">{{yanzhengText}}</button>
       </view>
-      <radio-group name="identity">
+      <radio-group name="account_type">
         <radio value="0" class="identity-radio" checked>我是学生</radio>
         <radio value="1" class="identity-radio">我是教师</radio>
       </radio-group>

@@ -59,7 +59,7 @@
 </view>
 <view class="all-avg-list-box">
   <view class="all-avg-list" wx:for="{{avg_list}}" wx:key="{{index}}" wx:for-item="item">
-    <view class="page-row">
+    <view class="page-row" bindtap="toSelfStatusDetail" data-index="{{items['uid']}}">
       <view class="item-left">
         <icon class="iconfont icon-xuesheng"></icon>
         <text class="student-name">{{item.student_name}}</text>

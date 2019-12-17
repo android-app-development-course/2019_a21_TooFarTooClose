@@ -83,18 +83,18 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/getTimeScore.php',
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/getTimeScore.php',
+      // header: {
+      //   "Content-Type": "application/x-www-form-urlencoded"
+      // },
       data: {
         course_id: that.data.course_id,
         type: type
       },
-      method: "POST",
+      method: "GET",
       dataType: 'json',
       success: function (res) {
-        
+        console.log(res.data)
         x=res.data['x']
         y1 = res.data['y1']
         y2 = res.data['y2']
@@ -110,8 +110,6 @@ Page({
 
       }
     })
-
-
 
   },
 
@@ -180,7 +178,7 @@ Page({
         axisTick: {
           inside: true,
           alignWithLabel: true
-        }
+        },
       },
       yAxis: {
         x: 'center',
@@ -224,7 +222,7 @@ Page({
   },
 
   tapMonth:function(){
-    Labelinterval=0;
+    Labelinterval=3;
     this.getTimeData("m")
     this.init_echarts()
     this.setData({
@@ -245,9 +243,9 @@ Page({
   getAverageScore: function () {
     let that = this
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/getAverageScore.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/getAverageScore.php',
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       data: {
         course_id: that.data.course_id,
@@ -297,6 +295,13 @@ Page({
     })
   },
 
+  toSelfStatusDetail: function (event){
+    var uid = event.currentTarget.dataset['uid'];
+    wx.navigateTo({
+      url: '../selfStatusDetail/selfStatusDetail?uid=' + uid+"&course_id="+this.data.course_id
+    })
+  },
+
 
   ///////////////////////弹出菜单动画///////////////////////////
   //点击弹出
@@ -316,18 +321,19 @@ Page({
     }
   },
   input: function () {
-    console.log("input")
-    this.tapWeek()
+    console.log("year")
+    this.tapYear()
     this.plus();//收回
   },
   transpond: function () {
-    console.log("transpond")
+    console.log("month")
     this.tapMonth()
     this.plus();//收回
   },
   collect: function () {
-    console.log("collect")
-    this.tapYear()
+    console.log("week")
+    
+    this.tapWeek()
     this.plus();//收回
   },
 

@@ -5,8 +5,11 @@
     <view class="profile-left">
       <view class="class-title">{{classTitle}}</view>
       <view class="class-teacher">{{classTeacher}}</view>
-      <view class="result-isrunning" wx:if="{{running}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
-      <view class="result-isnotrunning" wx:else="{{running}}"><icon class="status-icon iconfont icon-shixinyuanxing">未进行</icon></view>
+      <view class="result-isrunning" wx:if="{{course_status==1}}"><icon class="status-icon iconfont icon-shixinyuanxing">正在进行</icon></view>
+      <view class="result-isnotrunning" wx:if="{{course_status==0}}"><icon class="status-icon iconfont icon-shixinyuanxing">未开始</icon></view>
+       <view class="result-isnotrunning" wx:if="{{course_status==2}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可中途加入</icon></view>
+        <view class="result-iswaiting" wx:if="{{course_status==3}}"><icon class="status-icon iconfont icon-shixinyuanxing">等待中</icon></view>
+
       <view class="result-isjoinable" wx:if="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">可加入</icon></view>
       <view class="result-isnotjoinable" wx:else="{{joinable}}"><icon class="status-icon iconfont icon-shixinyuanxing">不可加入</icon></view>
     </view>
@@ -21,7 +24,7 @@
   <view class="class-intro">{{classIntro}}</view>
   <view class="divLineRow"></view>
 
-  <view class="control-box  page-col" wx:if="{{identity==0}}" hidden="{{hasJoin==0}}">
+  <view class="control-box  page-col" wx:if="{{account_type==0}}" hidden="{{had_join==0}}">
     <view class="page-row">
       <view class="item-area-stu page-col">
         <icon class="iconfont icon-shuju" bindtap="toSelfStatusDetail"></icon>
@@ -47,7 +50,7 @@
    
   </view>
 
-  <view class="control-box page-row" wx:if="{{identity==1}}" hidden="{{hasJoin==0}}">
+  <view class="control-box page-row" wx:if="{{account_type==1}}" hidden="{{had_join==0}}">
     <view class="item-area-tea page-col">
       <icon class="iconfont icon-shuju" bindtap="toClassStatusDetail"></icon>
       <text class="title-text">专注度数据</text>

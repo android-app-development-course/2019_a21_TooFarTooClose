@@ -3,7 +3,7 @@
   <icon class="iconfont icon-zuoye"></icon>
   <text class="brand">作业</text>
 </view>
-<view wx:if="{{identity==1}}">
+<view wx:if="{{account_type==1}}">
   <view class="page-row" bindtap="dropDown" hidden="{{openDropdown}}">
     <icon class="iconfont icon-add-fill"></icon>
     <text class="add-homework">新作业</text>
@@ -26,25 +26,23 @@
   </view>
 </view>
 
-<view class="item-box" wx:if="{{identity==1}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
-  
-</view>
+<view class="nothing-to-show" wx:if="{{nothing_to_show}}">暂无作业</view>
 
-<view class="item-box" wx:if="{{identity==0}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+<view class="item-box" wx:if="{{account_type==0}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
 
   <view class="homework-item page-row" bindtap="uploadHomework" data-index="{{items['homework_id']}}">
     <view class="item-left">
       <view class="item-title">{{items['homework_title']}}</view>
       <view class="page-row">
-        <icon class="iconfont icon-yiwancheng" wx:if="{{items['has_complete']==1}}">已提交</icon>
-        <icon class="iconfont icon-weiwancheng" wx:else="{{items['has_complete']}}">待提交</icon>
+        <icon class="iconfont icon-yiwancheng" wx:if="{{items['had_completed']==1}}">已提交</icon>
+        <icon class="iconfont icon-weiwancheng" wx:else="{{items['had_completed']}}">待提交</icon>
         <view class="deadline">截止时间：{{items['deadline']}} </view>
       </view>
       
     </view>
     <view class="item-right page-row">
-      <text class="goto-complete"  wx:if="{{items['has_complete']==1}}">修改</text>
-      <text class="goto-complete"  wx:else="{{items['has_complete']}}">提交</text>
+      <text class="goto-complete"  wx:if="{{items['had_completed']==1}}">修改</text>
+      <text class="goto-complete"  wx:else="{{items['had_completed']}}">提交</text>
       <icon class="iconfont icon-rightarrow"></icon>
     </view>
 
@@ -52,7 +50,7 @@
 </view>
 
 <!-- 教师 -->
-<view class="item-box" wx:if="{{identity==1}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
+<view class="item-box" wx:if="{{account_type==1}}" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
 
   <view class="homework-item page-row">
     <view class="item-left">

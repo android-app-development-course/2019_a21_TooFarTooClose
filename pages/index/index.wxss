@@ -14,7 +14,7 @@ swiper image{
   background: #ffffff;
   border: 1px solid #000000;  
   border-radius: 40rpx;  
-  margin-left: 20rpx;  
+  margin-left: 10rpx;  
 }  
 
 .search_arr input{  
@@ -68,9 +68,7 @@ swiper image{
   border-color:#000000;
 }
 
-.tixing{
-  font-size: 35rpx;
-}
+
 
 .newclass-brand{
   font-size:37rpx;
@@ -102,7 +100,7 @@ swiper image{
   border-radius: 10rpx;
   border-style:dashed;
   border-width:1px;
-  border-color:gray;
+  border-color:#FFFFFF;
 }
 
 .course-score-brand{
@@ -118,4 +116,9 @@ swiper image{
   font-weight: bold;
   color:#00FA9A;
   text-align: center;
+}
+
+.icon-tixing{
+  font-size: 35rpx;
+  color:#000000
 }

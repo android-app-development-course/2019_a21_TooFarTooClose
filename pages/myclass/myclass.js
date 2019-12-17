@@ -6,18 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    identity:0,   //1指老师，0指学生
+    account_type:0,   //1指老师，0指学生
     activeClass:"",
     items:{},
     class_name:"概率论与数理统计",
-    running:1
+    course_status:1
   },
 
   toClassDetail:function(event){
-    var class_id = event.currentTarget.dataset['index'];
-    console.log("class_id" + class_id)
+    var course_id = event.currentTarget.dataset['index'];
+    console.log("course_id" + course_id)
     wx.navigateTo({
-      url: '../classDetail/classDetail?class_id=' + class_id
+      url: '../classDetail/classDetail?course_id=' + course_id
     })
   },
 
@@ -26,7 +26,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      identity:wx.getStorageSync('identity')
+      account_type:wx.getStorageSync('account_type')
     })
 
     this.getClass()
@@ -35,26 +35,26 @@ Page({
   getClass:function(){
     let that=this;
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/getClass.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/getClass.php',
       data:{
-        skey:wx.getStorageSync('skey'),
-        identity:wx.getStorageSync('identity')
+        uid:wx.getStorageSync('uid'),
+        account_type:wx.getStorageSync('account_type')
       },
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        //返回的json数组结果中包含：running，class_name，teacher，img_url
+        //返回的json数组结果中包含：course_status，class_name，teacher，img_url
         that.setData({
           items:res.data
         })
         for(let i=0;i<that.data.items.length;i++){
-          that.data.items[i]['running'] = parseInt(that.data.items[i]['running']);
+          that.data.items[i]['course_status'] = parseInt(that.data.items[i]['course_status']);
           //截取课程介绍超长的部分
-          if (that.data.items[i]['class_intro'].length>35){
-            that.data.items[i]['class_intro'].slice(0,34)+"……";
+          if (that.data.items[i]['introduction_text'].length>35){
+            that.data.items[i]['introduction_text'].slice(0,34)+"……";
           }
         }
       },

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    skey:"",
+    uid:"",
     class_title:"",
     class_intro:"",
     max_num:10,
@@ -51,10 +51,10 @@ Page({
     }
 
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/newClass.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/newClass.php',
       
       data: {
-        skey: wx.getStorageSync('skey'),
+        uid: wx.getStorageSync('uid'),
         class_title:that.data.class_title,
         class_intro:that.data.class_intro,
         max_num:that.data.max_num

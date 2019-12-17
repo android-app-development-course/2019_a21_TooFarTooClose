@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/login/login",
     "pages/signin/signin",
@@ -13,7 +12,6 @@
     "pages/homework/homework",
     "pages/classResource/classResource",
     "pages/newClass/newClass",
-    "pages/classEdit/classEdit",
     "pages/classManage/classManage",
     "pages/selfStatusDetail/selfStatusDetail",
     "pages/classStatusDetail/classStatusDetail",

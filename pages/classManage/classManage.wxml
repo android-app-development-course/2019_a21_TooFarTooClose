@@ -43,8 +43,8 @@
     <view wx:for="{{items}}"  wx:key="{{index}}"  class="item">
      
       <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
-      <icon class="iconfont icon-.icon-character-avatar"></icon>{{item.name}}</view>
-      <view data-index="{{index}}" bindtap = "delItem" class="inner del">移除</view>
+      <icon class="iconfont icon-.icon-character-avatar"></icon>{{item.student_name}}</view>
+      <view data-index="{{index}}" bindtap = "sendDel" class="inner del">移除</view>
     </view>
   </view>
 

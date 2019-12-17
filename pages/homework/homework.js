@@ -5,37 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    identity:0,
-    skey:"",
+    account_type:0,
+    uid:"",
     items:{},
-    class_id:0,
+    course_id:0,
     nowDate:"",
     deadline:"",
     homeworkTitle:"",
-    openDropdown:0
+    openDropdown:0,
+    nothing_to_show:1,
   },
 
   getHomeWorkInfo:function(){
     let that=this;
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/homework.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/homework.php',
       data:{
-        class_id:that.data.class_id,
-        skey:that.data.skey,
-        identity:that.data.identity
+        course_id:that.data.course_id,
+        uid:that.data.uid,
+        account_type:that.data.account_type
       },
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: 'POST',
       dataType: 'json',
       success: function (res){
-        if(that.data.identity==0){
+        //无作业
+        if(res.data.length==0){
+          that.setData({
+            nothing_to_show:1
+          })
+        }
+        if(that.data.account_type==0){
           that.setData({
             items: res.data
           })
           for (let i = 0; i < that.data.items.length; i++) {
-            that.data.items[i]['has_complete'] = parseInt(that.data.items[i]['has_complete']);
+            that.data.items[i]['had_completed'] = parseInt(that.data.items[i]['had_completed']);
           }
         }else{
           that.setData({
@@ -57,12 +64,12 @@ Page({
       success(res){
         const tempFilePath=res.tempFilePaths
         wx.uploadFile({
-          url: 'http://127.0.0.1/',//此处应是小程序后台服务器(开发者)的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
+          url: 'http://www.hinatazaka46.cn/',//此处应是小程序后台服务器(开发者)的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
           filePath: tempFilePaths[0],
-          name: that.data.homework_id+"-"+this.data.skey,
+          name: that.data.homework_id+"-"+this.data.uid,
           formData: { //上传POST参数信息
-            'class_id':that.data.class_id,
-            'skey': that.data.skey,
+            'course_id':that.data.course_id,
+            'uid': that.data.uid,
             'homework_id':homework_id
           },
           success(res) { //上传成功回调函数
@@ -106,9 +113,9 @@ Page({
   onLoad: function (options) {
     this.setData({
       nowDate:getToday(),
-      class_id:options['class_id'],
-      skey:wx.getStorageSync('skey'),
-      identity:wx.getStorageSync('identity')
+      course_id:options['course_id'],
+      uid:wx.getStorageSync('uid'),
+      account_type:wx.getStorageSync('account_type')
     })
 
     this.getHomeWorkInfo();
@@ -133,9 +140,9 @@ Page({
       homeworkTitle
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/uploadHomework.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/uploadHomework.php',
       data: {
-        class_id: that.data.class_id,
+        course_id: that.data.course_id,
         homework_title:that.data.homeworkTitle,
         deadline:that.data.deadline
       },

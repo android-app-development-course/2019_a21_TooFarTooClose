@@ -19,28 +19,31 @@ Page({
       title: '查找中',
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/searchCourse.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/searchCourse.php',
       data:{
         value:this.data.searchValue
       },
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       dataType: 'json',
       success: function (res) {
         wx.hideLoading()
-        that.setData({
-          resultArray: res.data,
-        })
-        for (var j = 0 ; j < that.data.resultArray.length; j++) {
-          that.data.resultArray[j]['course_status'] = parseInt(that.data.resultArray[j]['course_status']);
-          that.data.resultArray[j]['joinable'] = parseInt(that.data.resultArray[j]['joinable']);
+        if(res.data.length>0){
+          that.setData({
+            resultArray: res.data,
+          })
+          for (var j = 0; j < that.data.resultArray.length; j++) {
+            that.data.resultArray[j]['course_status'] = parseInt(that.data.resultArray[j]['course_status']);
+            that.data.resultArray[j]['joinable'] = parseInt(that.data.resultArray[j]['joinable']);
+          }
+          that.setData({
+            items: that.data.resultArray
+          })
         }
-        that.setData({
-          items:that.data.resultArray
-        })
-        console.log(that.data.items)
+
+        
       },
       fail(err){
         wx.hideLoading()

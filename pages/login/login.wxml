@@ -8,7 +8,7 @@
 
       <input name="id" class="id-input" placeholder-class="phcolor" placeholder="请输入手机号" maxlength="11"/>
       <view class="id-text">密码</view>
-      <input name="pwd" class="id-input" placeholder-class="phcolor" password="true" placeholder="请输入密码" />
+      <input name="pwd" class="id-input" placeholder-class="phcolor" password="true" placeholder="请输入密码" maxlength="30"/>
       <button class="login-btn" form-type="submit" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">登录</button>
     </form>
   </view>

@@ -5,12 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    class_id:0,
+    course_id:0,
     items:{},
     resourceTitle:"",
-    identity:0,
+    account_type:0,
     openDropdown:0,
-    tempFilePath:""
+    tempFilePath:"",
+    nothing_to_show:0
   },
 
   /**
@@ -19,21 +20,24 @@ Page({
   onLoad: function (options) {
     let that=this;
     this.setData({
-      class_id: options['class_id'],
-      identity:parseInt(wx.getStorageSync('identity'))
+      course_id: options['course_id'],
+      account_type:parseInt(wx.getStorageSync('account_type'))
     })
 
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/resource.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/resource.php',
       data:{
-        class_id:that.data.class_id
+        course_id:that.data.course_id
       },
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       dataType: 'json',
       success:function(res){
+        if(res.data.length==0){
+          nothing_to_show:1
+        }
         that.setData({
           items:res.data
         })
@@ -67,11 +71,11 @@ Page({
 
     //上传文件
     wx.uploadFile({
-      url: 'http://127.0.0.1/',//此处应是小程序后台服务器(开发者)的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
+      url: 'http://www.hinatazaka46.cn/',//此处应是小程序后台服务器(开发者)的地址，由微信服务器向开发者的后台服务器发送POST请求，参考https://www.cnblogs.com/ailex/p/10007885.html
       filePath: that.data.tempFilePath,
       name: this.data.resourceTitle,
       formData: { //上传POST参数信息
-        "class_id": that.data.class_id,
+        "course_id": that.data.course_id,
         'resource_title':that.data.resourceTitle
       },
       success(res) { //上传成功回调函数
@@ -89,9 +93,9 @@ Page({
 
   copyUrl:function(event){
     let that = this;
-    var index = event.currentTarget.dataset['index'];
+    var index = parseInt( event.currentTarget.dataset['index']);
     wx.setClipboardData({
-      data: that.items[index]['resource_url'],
+      data: that.data.items[index]['resource_url'],
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {

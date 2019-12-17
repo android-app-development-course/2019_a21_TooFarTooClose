@@ -123,6 +123,12 @@ page{
   margin-bottom: 10rpx;
 }
 
+.result-iswaiting{
+  color:#FFFF00;
+  margin-left:10rpx;
+  margin-bottom:20rpx;
+}
+
 .status-icon{
   font-size:30rpx;
 }

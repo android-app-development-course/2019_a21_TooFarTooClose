@@ -10,23 +10,23 @@
 <view>
   <swiper indicator-dots='true' indicator-color='#9932CC' indicator-active-color='#BA55D3' autoplay='true'>
     <swiper-item>
-      <image src="{{imgs[0]}}" mode="aspectFill"></image>
+      <image src="{{imgs[0]}}" mode="aspectFill" bindtap="toClassDetail" data-index="{{jumpCourse[0]}}"></image>
     </swiper-item>
     <swiper-item>
-      <image src="{{imgs[1]}}" mode="aspectFill"></image>
+      <image src="{{imgs[1]}}" mode="aspectFill" bindtap="toClassDetail" data-index="{{jumpCourse[1]}}"></image>
     </swiper-item>
     <swiper-item>
-      <image src="{{imgs[2]}}" mode="aspectFill"></image>
+      <image src="{{imgs[2]}}" mode="aspectFill" bindtap="toClassDetail" data-index="{{jumpCourse[2]}}"></image>
     </swiper-item>
   </swiper>
 </view>
 
 <view class="max-box">
-  <view class="remind" wx:if="{{identity==0}}">
-    <icon class="tixing iconfont icon-tixing">作业提醒：</icon>
+  <view class="remind" wx:if="{{account_type==0}}">
+    <icon class="iconfont icon-tixing">作业提醒：</icon>
     <swiper class='swiper-box' autoplay='true' interval='2000' vertical='true' circular='true'>
-      <block wx:for="{{remindItems}}" wx:key="{{index}}" wx:for-item="items">
-        <swiper-item class='item'>{{items['class_name']+"-"+items['homework_title']}}</swiper-item>
+      <block wx:for="{{remindItems}}" wx:key="{{index}}" wx:for-item="items" >
+        <swiper-item class='item' bindtap="toHomework" data-index="{{items['course_id']}}">{{items['class_name']+"-"+items['homework_title']}}</swiper-item>
       </block>
     </swiper>
   </view>

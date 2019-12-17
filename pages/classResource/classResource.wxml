@@ -4,7 +4,7 @@
   <text class="brand">课程资源</text>
 </view>
 
-<view wx:if="{{identity==1}}">
+<view wx:if="{{account_type==1}}">
   <view class="page-row" bindtap="dropDown" hidden="{{openDropdown}}">
     <icon class="iconfont icon-add-fill"></icon>
     <text class="add-resource">上传资源</text>
@@ -25,6 +25,7 @@
   </view>
 </view>
 
+<view class="nothing-to-show" wx:if="{{nothing_to_show}}">暂无作业</view>
 
 <view class="item-box" wx:for="{{items}}" wx:key="{{index}}" wx:for-item="items">
 

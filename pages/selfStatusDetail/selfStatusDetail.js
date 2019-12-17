@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    class_id: 0,
+    course_id: 0,
     isPopping: false,//是否已经弹出
     animPlus: {},//旋转动画
     animCollect: {},//item位移,透明度
@@ -22,7 +22,7 @@ Page({
     animInput: {},//item位移,透明度
     avgScore: 0,//平均专注度
     dailyGraphNotshow: true, //“上一节课”按钮不可用
-    skey:"",
+    uid:"",
     highScore:0,
     lowScore:0,
     allAvgScore:0,
@@ -55,6 +55,7 @@ Page({
       avg += y[i];
     }
     avg = avg / y.length
+    avg = Math.floor(avg);
     this.setData({
       highScore:max,
       highTime:maxTime,
@@ -86,9 +87,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      // classs_id:options['class_id']
-      skey:wx.getStorageSync("skey"),
-      class_id: 1
+      course_id:options['course_id'],
+      uid: options['uid']
     })
     
   },
@@ -118,16 +118,16 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/getSelfTimeScore.php',
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/getSelfTimeScore.php',
+      // header: {
+      //   "Content-Type": "application/x-www-form-urlencoded"
+      // },
       data: {
-        class_id: that.data.class_id,
+        course_id: that.data.course_id,
         type: type,
-        skey:that.data.skey
+        uid:that.data.uid
       },
-      method: "POST",
+      method: "GET",
       dataType: 'json',
       success: function (res) {
         x = res.data['x']
@@ -240,7 +240,7 @@ Page({
   },
 
   tapMonth: function () {
-    Labelinterval = 0;
+    Labelinterval = 3;
     this.getTimeData("m")
     this.init_echarts()
     this.setData({
@@ -275,18 +275,18 @@ Page({
     }
   },
   input: function () {
-    console.log("input")
-    this.tapWeek()
+    console.log("year")
+    this.tapYear()
     this.plus();//收回
   },
   transpond: function () {
-    console.log("transpond")
+    console.log("month")
     this.tapMonth()
     this.plus();//收回
   },
   collect: function () {
-    console.log("collect")
-    this.tapYear()
+    console.log("week")
+    this.tapWeek()
     this.plus();//收回
   },
 

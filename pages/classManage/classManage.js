@@ -28,11 +28,14 @@ Page({
   loadStudentList:function(){
     let that=this
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/studentList.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/studentList.php',
       data:{
         course_id:that.data.course_id
       },
-      method: 'GET',
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       dataType: 'json',
       success:function(res){
         that.setData({
@@ -74,7 +77,7 @@ Page({
       url: 'xxxxxxxxxxxxxxxxxxxxxxxxxxx',
       method: 'POST',
       header: {
-        "content-type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
         course_id:that.data.course_id,
@@ -108,15 +111,15 @@ Page({
   getClassManageInfo:function(){
     let that=this
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/manageInfo.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/manageInfo.php',
       data:{
         course_id:that.data.course_id
       },
       method: 'POST',
-      header:{
-        "content-type":"multipart/form-data"
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      dataType: 'json',
+      dataType: 'json', 
       success:function(res){
         let joinable=res.data[0]['joinable']
         let max_num=parseInt(res.data[0]['max_num'])
@@ -222,22 +225,19 @@ Page({
     });
   },
   //点击删除按钮事件
-  delItem: function (e) {
-    //获取列表中要删除项的下标
-    var index = e.target.dataset.index;
-    if(!this.sendDel(index)){
-      return
-    }
-    var items = this.data.items;
+  delItem: function (index) {
+    let items = this.data.items;
     //移除列表中下标为index的项
     items.splice(index, 1);
     //更新列表的状态
     this.setData({
       items: items
     });
+
   },
  
-  sendDel:function(index){
+  sendDel: function (e){
+    var index = e.target.dataset.index;
     let that=this;
     wx.showModal({
       title: '提示',
@@ -246,14 +246,14 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.request({
-            url: getApp().globalData.urlPath + "spendingType/delete",
+            url: "http://www.hinatazaka46.cn/StatusWeChatServer/deleteStudent.php",
             method: 'POST',
             header: {
-              "content-type": "multipart/form-data"
+              "Content-Type": "application/x-www-form-urlencoded"
             },
             data: {
               course_id:that.data.course_id,
-              skey:that.data.items[index]['skey']
+              uid:that.data.items[index]['uid'] 
             },
             success: function (res) {
               if (res.data.hasOwnProperty('error_code')){
@@ -267,6 +267,7 @@ Page({
                 title: '删除成功',
                 icon:"success"
               })
+              that.delItem(index)
               return true
             }
           })

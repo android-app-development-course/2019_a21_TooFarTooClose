@@ -15,7 +15,7 @@ Page({
     course_status:0,
     joinable:0,
     account_type:0,
-    hasJoin:0,
+    had_join:0,
     show_join_btn:1,
   },
 
@@ -30,6 +30,7 @@ Page({
     })
 
     this.getClassDetail();
+    this.getIfJoin();
 
     //决定是否显示“加入课程”按键******************注意此处可能在获取到account_type前就进行判断造成错误
     if (this.data.account_type == 1 ){
@@ -44,24 +45,23 @@ Page({
   getIfJoin:function(){
     let that=this;
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/ifJoin.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/ifJoin.php',
       data:{
         uid:that.data.uid,
         course_id:that.data.course_id,
         account_type:that.account_type
       },
       header:{
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: 'POST',
       dataType: 'json',
       success: function(res) {
+        console.log("if join")
         console.log(res.data)
-        if(res.data!='0'){
+        if(res.data[0]['status_code']=='1'){
           that.setData({
-            hasJoin:1
-          })
-          that.setData({
+            had_join:1,
             show_join_btn: 0
           })
         }
@@ -76,14 +76,14 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/classDetail.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/classDetail.php',
       data:{
         course_id:that.data.course_id,
         uid: that.data.uid,
         account_type: that.account_type
       },
       header:{
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
       dataType: 'json',
@@ -94,17 +94,17 @@ Page({
           classTeacher:res.data[0]['teacher_name'],
           titleImgUrl:res.data[0]['img_url'],
           classIntro:res.data[0]['introduction_text'],
-          classGonggao: res.data[0]['class_gonggao'],
+          classGonggao: res.data[0]['notice_text'],
           course_status:parseInt(res.data[0]['course_status']),
           joinable:parseInt(res.data[0]['joinable']),
-          hasJoin:parseInt(res.data[0]['had_join'])
+          had_join:parseInt(res.data[0]['had_join'])
         })
         if(that.data.joinable==0){
           that.setData({
             show_join_btn: 0
           })
         }
-        if (that.data.hasJoin != '0') {
+        if (that.data.had_join != '0') {
           that.setData({
             show_join_btn: 0
           })
@@ -123,7 +123,7 @@ Page({
       title: '正在加入',
     })
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/joinClass.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/joinClass.php',
       data:{
         uid: that.data.uid,
         course_id:that.data.course_id
@@ -143,7 +143,7 @@ Page({
             mask: true
           })
           that.setData({
-            hasJoin:1,
+            had_join:1,
             show_join_btn:0
           })
         }else{
@@ -161,7 +161,7 @@ Page({
 
   toSelfStatusDetail:function(){
     wx.navigateTo({
-      url: '../selfStatusDetail/selfStatusDetail'
+      url: '../selfStatusDetail/selfStatusDetail?uid=' + this.data.uid + "&course_id=" + this.data.course_id
     })
   },
 

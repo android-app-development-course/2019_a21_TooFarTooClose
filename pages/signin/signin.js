@@ -25,6 +25,11 @@ Page({
     yanzheng_value:""
   },
 
+  onLoad:function(){
+    wx.setStorageSync('avatarUrl', "http://www.hinatazaka46.cn/StatusWeChatServer/imgs/notfound_bg.jpg");
+    
+  },
+
   formSubmit:function(e){
     let {phone,name,pwd,account_type}=e.detail.value;
     if(name.length==0){
@@ -103,12 +108,12 @@ Page({
       return;
     }else{
       wx.request({
-        url: 'http://127.0.0.1/StatusWeChatServer/yanzheng.php',
+        url: 'http://www.hinatazaka46.cn/StatusWeChatServer/yanzheng.php',
         data:{
           phone:that.data.phone
         },
         header: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "application/x-www-form-urlencoded"
         },
         method: "POST",
         dataType: 'json',
@@ -150,18 +155,28 @@ Page({
   },
 
   onGotUserInfo: function (e) {
-    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
+   
+    if(e.detail.userInfo){
+      wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl);
+    }else{
+      
+      wx.showToast({
+        title: '将无法使用头像',
+        icon:"none"
+      })
+    }
+    
 
   },
 
 
-  //登录
+  //注册
   getSigninInfo:function(){
     var that=this;
     wx.request({
-      url:'http://127.0.0.1/StatusWeChatServer/signin.php',
+      url:'http://www.hinatazaka46.cn/StatusWeChatServer/signin.php',
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       data:{
         phone:that.data.phone,
@@ -177,7 +192,7 @@ Page({
         });
         //以同步方式存储 uid等信息
         try{
-          wx.setStorageSync(' uid', that.data.uid);
+          wx.setStorageSync('uid', that.data.uid);
           wx.setStorageSync('phone', that.data.phone);
           wx.setStorageSync('name', that.data.name);
           wx.setStorageSync('account_type', that.data.account_type);
@@ -222,8 +237,14 @@ Page({
     this.setData({
       yanzheng_value:e.detail.value
     })
-    if(this.data.yanzheng_value==this.data.yanzheng_answer){
-      this.data.yanzheng=true;
+
+  },
+
+  checkYanzheng:function(e){
+    if (this.data.yanzheng_value == this.data.yanzheng_answer) {
+      this.setData({
+        yanzheng:true
+      })
     }
   },
 
@@ -247,7 +268,7 @@ Page({
   uniquePhoneCheck:function(e){
     let that=this;
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/phoneCheck.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/phoneCheck.php',
       header: {
         "Content-Type": "multipart/form-data"
       },

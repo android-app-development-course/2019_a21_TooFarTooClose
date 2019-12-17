@@ -6,6 +6,7 @@ Page({
   data: {
     inputValue: '',
     imgs:[],
+    jumpCourse:[],
     self_info:{},
     uid:"",
     remindItems:{},
@@ -59,15 +60,16 @@ Page({
 
     //获取封面图片
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/respondIndexImg.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/respondIndexImg.php',
       method: "POST",
       header: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       dataType: 'json',
       success: function (res) {
         that.setData({
-          imgs:res.data
+          imgs:res.data['img_url'],
+          jumpCourse:res.data['course_id']
         })
       }
     })
@@ -80,15 +82,34 @@ Page({
 
   },
 
+  toHomework:function(event){
+    let that = this;
+    let course_id = event.currentTarget.dataset['index'];
+    wx.navigateTo({
+      url: '../homework/homework?course_id='+course_id
+    })
+  },
+
+  toClassDetail:function(event){
+    let that=this;
+    let course_id = event.currentTarget.dataset['index'];
+    wx.navigateTo({
+      url: '../classDetail/classDetail?course_id='+course_id,
+    })
+  },
+
   //获取最近一节课的平均专注度
   getScore:function(){
     let that=this
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/classScore.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/classScore.php',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       data:{
         uid: wx.getStorageSync('uid')
       },
-      method: "GET",
+      method: "POST",
       dataType: 'json',
       success:function(res){
         console.log(res.data)
@@ -99,14 +120,18 @@ Page({
     })
   },
 
+//获取作业提醒
   getHomeworkRemind:function(){
     let that=this
     wx.request({
-      url: 'http://127.0.0.1/StatusWeChatServer/homeworkRemind.php',
+      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/homeworkRemind.php',
       data:{
         uid: wx.getStorageSync('uid')
       },
-      method: "GET",
+      method: "POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       dataType: 'json',
       success:function(res){
         

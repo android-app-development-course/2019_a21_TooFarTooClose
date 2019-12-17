@@ -4,12 +4,12 @@
     <image src='{{headphoto}}' class="head-photo"> </image>
     <view class="profile-content page-col">
       <p class="name">{{name}}</p>
-      <p class="identity" wx:if="{{identity}}">教师</p>
-      <p class="identity" wx:else="{{identity}}">学生</p>
+      <p class="identity" wx:if="{{account_type}}">教师</p>
+      <p class="identity" wx:else="{{account_type}}">学生</p>
     </view>
   </view>
 
-  <view class="status-msg page-row" wx:if="{{identity==0}}">
+  <view class="status-msg page-row" wx:if="{{account_type==0}}">
     <view class="daily">
       <view class="msg-score" style="color:{{dailyColor}}">{{dailyScore}}</view>
       <view class="msg-title">今天专注度平均得分</view>
@@ -19,6 +19,11 @@
       <view class="msg-score" style="color:{{monthlyColor}}">{{monthlyScore}}</view>
       <view class="msg-title">本月专注度平均得分</view>
     </view>
+  </view>
+
+  <view class="to-correct page-row" wx:if="{{account_type==1}}">
+    <icon class="iconfont icon-tixing"></icon>
+    <text class="to-correct-text">有{{reserve_num}}个新作业等待批改</text>
   </view>
 
   <view class="item-box">
