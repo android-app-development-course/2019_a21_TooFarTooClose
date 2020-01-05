@@ -19,7 +19,7 @@ Page({
       title: '查找中',
     })
     wx.request({
-      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/searchCourse.php',
+      url: 'http://127.0.0.1/StatusWeChatServer/searchCourse.php',
       data:{
         value:this.data.searchValue
       },

@@ -32,7 +32,7 @@ Page({
   getLoginInfo:function(){
     let that=this;
     wx.request({
-      url: 'http://www.hinatazaka46.cn/StatusWeChatServer/login.php',
+      url: 'http://127.0.0.1/StatusWeChatServer/login.php',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

@@ -241,7 +241,7 @@ Page({
   },
 
   checkYanzheng:function(e){
-    if (this.data.yanzheng_value == this.data.yanzheng_answer) {
+    if (this.data.yanzheng_value.length>0&&(this.data.yanzheng_value == this.data.yanzheng_answer)) {
       this.setData({
         yanzheng:true
       })

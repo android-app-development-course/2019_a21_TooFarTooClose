@@ -18,7 +18,7 @@
   width:98%;
   height:600rpx;
   border-radius:10rpx;
-  /* background: #FFFFFF; */
+  background: #FFFFFF;
 
 }
 

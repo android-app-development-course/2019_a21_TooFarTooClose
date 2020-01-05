@@ -12,7 +12,7 @@
   <form class="max-form" bindsubmit="formSubmit">
    
     <text class="item-brand">课程名称</text>
-    <input name="class_title"></input>
+    <input name="class_title" maxlength="30"></input>
     <text class="item-brand">课程容量</text>
     <slider class="num-sliser" bindchange="sliderChange" min="10" max="200" value="{{max_num}}" show-value></slider>
     <text class="item-brand">课程介绍</text>

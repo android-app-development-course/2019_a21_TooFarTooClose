@@ -124,7 +124,7 @@ page{
 }
 
 .result-iswaiting{
-  color:#FFFF00;
+  color:#FFA500;
   margin-left:10rpx;
   margin-bottom:20rpx;
 }

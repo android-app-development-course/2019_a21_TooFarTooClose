@@ -13,7 +13,7 @@ Page({
     deadline:"",
     homeworkTitle:"",
     openDropdown:0,
-    nothing_to_show:1,
+    nothing_to_show:0,
   },
 
   getHomeWorkInfo:function(){
